@@ -59,14 +59,14 @@ public class Main {
                     // end the game if user responds "no"
                     if (playAgainAnswer.equalsIgnoreCase("no")) {
                         System.out.println("Goodbye!");
-                        stopPlaying = true;
-                        correctPlayAgainAnswer = true;
+                        stopPlaying = true; // stop playing
+                        correctPlayAgainAnswer = true; // break out of loop
                     }
 
                     // replay the game if user responds "yes"
                     else if (playAgainAnswer.equalsIgnoreCase("yes")) {
-                        turn = 1;
-                        correctPlayAgainAnswer = true;
+                        turn = 1;  // reset turn
+                        correctPlayAgainAnswer = true; // break out of loop
                     }
 
                     // repeat if answer is not "yes" or "no"
@@ -81,10 +81,10 @@ public class Main {
             // display message if there is no winner
             if (predictorNumber != openHands) {
                 System.out.println("No winner!");
-                turn++;
+                turn++;  // increment turn variable 
             }
 
-            // E - reset field variables
+            // reset open hands and computer answer
             openHands = 0;
             user1.userOpenHands = 0;
             computer1.computerOpenHands = 0;
