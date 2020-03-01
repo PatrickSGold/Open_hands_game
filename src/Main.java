@@ -51,7 +51,7 @@ public class Main {
                 // ask if user wants to replay the game
                 System.out.println("Do you want to play again? ");
 
-                // assign answer to variable 
+                // assign answer to variable
                 String playAgainAnswer = input.nextLine();
 
 
@@ -84,7 +84,7 @@ public class Main {
             }
 
             // End of loop - increment turn variable and reset other variables values
-            turn++;
+            turn = 1;
             openHands = 0;
             user1.userOpenHands = 0;
             computer1.computerOpenHands = 0;
