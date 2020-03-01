@@ -29,37 +29,25 @@ class User {
         System.out.println("What is your input? ");
         userAnswer = input.nextLine();
 
-        if (turn % 2 != 0) {
-            userPredictorNumber = Integer.parseInt(userAnswer.substring(2, 3));
-        }
-
         // check if input is correct format
-        // if user is predictor
-        // if user answer is less or more than 3 characters
-        if (turn % 2 != 0) {
-            if (userAnswer.length() != 3) {
+        if (turn % 2 != 0) {  // check if user is predictor
+            if (userAnswer.length() != 3) {  // display message if answer is != 3 characters long
                 System.out.println("Bad input: correct input should be of the form CC3, " +
                         "where the first two letters indicate [O]pen or [C]losed state for each hand, " +
                         "followed by the prediction (0-4).");
 
+                // start over
                 promptUserForInput();
             }
 
-            // if user predictor number is not in the range of 1-4
-            if (userPredictorNumber <= 0 || userPredictorNumber > 4) {
-                System.out.println("Bad input. Prediction should be in the range of 1-4.");
-
-                promptUserForInput();
-            }
         }
 
-        // if user is not predictor
-        // if user answer is less or more than 2
-        if (turn % 2 == 0) {
-            if (userAnswer.length() != 2) {
+        if (turn % 2 == 0) {  // if user is not predictor
+            if (userAnswer.length() != 2) {   // display message if user answer is != 2
                 System.out.println("Bad input: correct input should be of the form OC, " +
                         "where the letters indicate [O]pen or [C]losed state for each hand.");
 
+                // start over
                 promptUserForInput();
             }
         }
@@ -71,34 +59,50 @@ class User {
                 case 'o': break;
                 case 'C': break;
                 case 'c': break;
-                default:
+                default:  // display message if input is not allowed
                     System.out.println("Bad input: correct input should be of the form CC3, " +
                             "where the first two letters indicate [O]pen or [C]losed state for each hand, " +
                             "followed by the prediction (0-4).");
 
+                    // start over
                     promptUserForInput();
                     break;
             }
         }
     }
 
-    // count number of open hands in user's answer
-    public void countUserOpenHands() {
+    // get the user's predictor number
+    public void getUserPredictorNumber() {
+        if (turn % 2 != 0) {  // check that user is predictor
+            userPredictorNumber = Integer.parseInt(userAnswer.substring(2, 3));
 
-        // count open hands
-        if (userAnswer.charAt(0) == 'O' || userAnswer.charAt(0) == 'o') {
-            userOpenHands++;
-        }
-        if (userAnswer.charAt(1) == 'O' || userAnswer.charAt(1) == 'o') {
-            userOpenHands++;
+            // Display message if prediction number is not in the range of 1-4
+            if (userPredictorNumber <= 0 || userPredictorNumber > 4) {
+                System.out.println("Bad input. Prediction should be in the range of 1-4.");
+
+                // start over
+                promptUserForInput();
+            }
         }
     }
 
-    // allow the user to set the turn number
-    public void setTurn(int currentTurn) {
-        turn = currentTurn;
+        // count number of open hands in user's answer
+        public void countUserOpenHands () {
+
+            // count open hands and increment userOpenHands variable
+            if (userAnswer.charAt(0) == 'O' || userAnswer.charAt(0) == 'o') {
+                userOpenHands++;
+            }
+            if (userAnswer.charAt(1) == 'O' || userAnswer.charAt(1) == 'o') {
+                userOpenHands++;
+            }
+        }
+
+        // allow the user to set the turn number
+        public void setTurn ( int currentTurn){
+            turn = currentTurn;
+        }
     }
 
 
-}
 

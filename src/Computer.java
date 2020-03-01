@@ -11,9 +11,9 @@ class Computer {
 
     // get input from computer
     public void getComputerAnswer() {
-        // loop that run twice, to get number of open or closed hands
+        // loop that runs twice, to get number of open or closed hands
         for (int i = 0; i < 2; i++) {
-            if ((int) (Math.random() * 101) < 50) {
+            if ((int) (Math.random() * 101) < 50) { // random number < 50 == open hand, random number > 50 == closed hand
                 computerAnswer += 'O';
             }
 
@@ -31,7 +31,7 @@ class Computer {
     // count number of open hands in computer's answer
     public void countComputerOpenHands() {
 
-        // count number of open hands
+        // count number of open hands and increment computerOpenHands variable
         if (computerAnswer.charAt(0) == 'O' || computerAnswer.charAt(0) == 'o') {
             computerOpenHands++;
         }

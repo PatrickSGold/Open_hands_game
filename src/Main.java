@@ -13,12 +13,14 @@ public class Main {
         int turn = 1;
         int openHands = 0;
         int predictorNumber = 0;
+        boolean stopPlaying = false;
 
         // beginning of loop
-        for (int i = 1; i < 9999999; i++) {
+        while (stopPlaying == false) {
             // run the user class and add number of open hands to the openHands variable
             user1.setTurn(turn);
             user1.promptUserForInput();
+            user1.getUserPredictorNumber();
             user1.countUserOpenHands();
             openHands += user1.userOpenHands;
 
@@ -54,7 +56,7 @@ public class Main {
                 // end the game if user responds "no"
                 if (playAgainAnswer.equalsIgnoreCase("no")) {
                     System.out.println("Goodbye!");
-                    break;
+                    stopPlaying = true; 
                 }
 
                 // replay the game if user responds "yes"

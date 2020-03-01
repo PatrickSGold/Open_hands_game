@@ -9,6 +9,12 @@ class UserTest {
         user1.setTurn(1);
         user1.userAnswer = "OO2";
         assertTrue(user1.userAnswer.length() == 3);
+    }
+
+    @org.junit.jupiter.api.Test
+    void getUserPredictorNumber() {
+        user1.setTurn(1);
+        user1.userAnswer = "OO2";
         user1.userPredictorNumber = Integer.parseInt(user1.userAnswer.substring(2, 3));
         assertEquals(2, user1.userPredictorNumber);
     }
