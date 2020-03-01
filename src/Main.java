@@ -65,7 +65,7 @@ public class Main {
 
                     // replay the game if user responds "yes"
                     else if (playAgainAnswer.equalsIgnoreCase("yes")) {
-                        turn = 0;
+                        turn = 1;
                         correctPlayAgainAnswer = true;
                     }
 
@@ -81,10 +81,10 @@ public class Main {
             // display message if there is no winner
             if (predictorNumber != openHands) {
                 System.out.println("No winner!");
+                turn++;
             }
 
-            // End of loop - reset field variables 
-            turn = 1;
+            // E - reset field variables
             openHands = 0;
             user1.userOpenHands = 0;
             computer1.computerOpenHands = 0;
