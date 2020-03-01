@@ -83,7 +83,7 @@ public class Main {
                 System.out.println("No winner!");
             }
 
-            // End of loop - increment turn variable and reset other variables values
+            // End of loop - reset field variables 
             turn = 1;
             openHands = 0;
             user1.userOpenHands = 0;
