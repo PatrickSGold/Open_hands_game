@@ -84,7 +84,7 @@ public class Main {
                 turn++;  // increment turn variable 
             }
 
-            // reset open hands and computer answer
+            // reset field variables 
             openHands = 0;
             user1.userOpenHands = 0;
             computer1.computerOpenHands = 0;
