@@ -14,6 +14,7 @@ public class Main {
         int openHands = 0;
         int predictorNumber = 0;
         boolean stopPlaying = false;
+        boolean correctPlayAgainAnswer = false;
 
         // beginning of loop
         while (stopPlaying == false) {
@@ -53,15 +54,27 @@ public class Main {
                 // assign answer to variable 
                 String playAgainAnswer = input.nextLine();
 
-                // end the game if user responds "no"
-                if (playAgainAnswer.equalsIgnoreCase("no")) {
-                    System.out.println("Goodbye!");
-                    stopPlaying = true; 
-                }
 
-                // replay the game if user responds "yes"
-                if (playAgainAnswer.equalsIgnoreCase("yes")) {
-                    turn = 0;
+                while (correctPlayAgainAnswer == false) {
+                    // end the game if user responds "no"
+                    if (playAgainAnswer.equalsIgnoreCase("no")) {
+                        System.out.println("Goodbye!");
+                        stopPlaying = true;
+                        correctPlayAgainAnswer = true;
+                    }
+
+                    // replay the game if user responds "yes"
+                    else if (playAgainAnswer.equalsIgnoreCase("yes")) {
+                        turn = 0;
+                        correctPlayAgainAnswer = true;
+                    }
+
+                    // repeat if answer is not "yes" or "no"
+                    else {
+                        System.out.println("Bad input. Please put 'Yes' or 'No'");
+
+                        playAgainAnswer = input.nextLine();
+                    }
                 }
             }
 

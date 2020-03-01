@@ -50,6 +50,7 @@ class User {
                 // start over
                 promptUserForInput();
             }
+            
             else if (userAnswer.length() == 3) { // display message if answer length is 3
                 System.out.println("Bad input: no prediction expected, you are not the predictor.");
 
