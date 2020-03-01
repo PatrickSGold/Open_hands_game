@@ -43,14 +43,14 @@ class User {
         }
 
         if (turn % 2 == 0) {  // if user is not predictor
-            if (userAnswer.length() < 2 || userAnswer.length() > 3) {   // display message if user answer is != 2
+            if (userAnswer.length() < 2 || userAnswer.length() > 3) {   // display message if answer length is less than 2 or more than 3
                 System.out.println("Bad input: correct input should be of the form OC, " +
                         "where the letters indicate [O]pen or [C]losed state for each hand.");
 
                 // start over
                 promptUserForInput();
             }
-            else if (userAnswer.length() == 3) {
+            else if (userAnswer.length() == 3) { // display message if answer length is 3
                 System.out.println("Bad input: no prediction expected, you are not the predictor.");
 
                 // start over
