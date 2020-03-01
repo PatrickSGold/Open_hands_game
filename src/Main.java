@@ -89,6 +89,7 @@ public class Main {
             user1.userOpenHands = 0;
             computer1.computerOpenHands = 0;
             computer1.computerAnswer = "";
+            correctPlayAgainAnswer = false; 
 
         }
 
