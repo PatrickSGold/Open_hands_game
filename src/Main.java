@@ -57,7 +57,7 @@ public class Main {
                     // end the game if user responds "no" to play again
                     if (playAgainAnswer.equalsIgnoreCase("no")) {
                         System.out.println("Goodbye!");
-                        stopPlaying = true; // stop playing
+                        stopPlaying = true;
                     }
 
                     // replay the game if user responds "yes" to play again
