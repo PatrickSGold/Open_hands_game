@@ -1,34 +1,34 @@
-// create computer class and declare field variables
+// declare field variables
 class Computer {
     public int turn = 1;
     int computerOpenHands = 0;
     String computerAnswer = "";
-    int computerPredictorNumber = 0;
+    int computerPredictionNumber = 0;
 
-    // create computer object
+    // create default constructor
     Computer() {
     }
 
     // get input from computer
     public void getComputerAnswer() {
-        // loop that runs twice, to get number of open or closed hands
+        // loop to generate total number of open or closed hands in computer's input
         for (int i = 0; i < 2; i++) {
-            if ((int) (Math.random() * 101) < 50) { // random number < 50 == open hand, random number > 50 == closed hand
+            // random number < 50 == open hand, random number > 50 == closed hand
+            if ((int)(Math.random() * 101) < 50) {
                 computerAnswer += 'O';
             }
-
             else {
                 computerAnswer += 'C';
             }
         }
 
-        // if computer is predictor, add predictor number to computer's answer
+        // if computer is predictor, add prediction number to computer's input
         if (turn % 2 == 0) {
             computerAnswer += (int)(Math.random() * 5);
         }
     }
 
-    // count number of open hands in computer's answer
+    // count and increment number of open hands in computer's input
     public void countComputerOpenHands() {
 
         // count number of open hands and increment computerOpenHands variable
@@ -40,10 +40,10 @@ class Computer {
         }
     }
 
-    // if computer if predictor, get predictor number
-    public void getComputerPredictorNumber() {
+    // if computer if predictor, assign prediction number to variable
+    public void getComputerPredictionNumber() {
         if (turn % 2 == 0) {
-            computerPredictorNumber = Integer.parseInt(computerAnswer.substring(2, 3));
+            computerPredictionNumber = Integer.parseInt(computerAnswer.substring(2, 3));
         }
     }
 

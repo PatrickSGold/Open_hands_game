@@ -4,42 +4,42 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class MainTest {
 
-    User user1 = new User();
-    Computer computer1 = new Computer();
+    User user = new User();
+    Computer computer = new Computer();
 
     @Test
     void main() {
         int turn = 1;
         int openHands = 0;
-        int predictorNumber = 0;
+        int predictionNumber = 0;
         boolean stopPlaying = false;
         String playAgainAnswer = "";
 
-        user1.setTurn(turn);
-        user1.userAnswer = "OO2";
-        user1.userPredictorNumber = Integer.parseInt(user1.userAnswer.substring(2, 3));
-        user1.countUserOpenHands();
-        assertEquals(2, user1.userPredictorNumber);
-        openHands += user1.userOpenHands;
+        user.setTurn(turn);
+        user.userAnswer = "OO2";
+        user.userPredictionNumber = Integer.parseInt(user.userAnswer.substring(2, 3));
+        user.countUserOpenHands();
+        assertEquals(2, user.userPredictionNumber);
+        openHands += user.userOpenHands;
         assertEquals(2, openHands);
 
 
-        computer1.setTurn(turn);
-        computer1.computerAnswer = "OO";
-        computer1.getComputerPredictorNumber();
-        computer1.countComputerOpenHands();
-        openHands += computer1.computerOpenHands;
-        assertTrue(openHands == user1.userOpenHands + computer1.computerOpenHands);
+        computer.setTurn(turn);
+        computer.computerAnswer = "OO";
+        computer.getComputerPredictionNumber();
+        computer.countComputerOpenHands();
+        openHands += computer.computerOpenHands;
+        assertTrue(openHands == user.userOpenHands + computer.computerOpenHands);
         assertEquals(4, openHands);
 
         if (turn % 2 != 0) {
-            predictorNumber = user1.userPredictorNumber;
-            assertEquals(2, predictorNumber);
+            predictionNumber = user.userPredictionNumber;
+            assertEquals(2, predictionNumber);
         }
         else {
-            computer1.computerAnswer = "OO2";
-            predictorNumber = computer1.computerPredictorNumber;
-            assertEquals(2, predictorNumber);
+            computer.computerAnswer = "OO2";
+            predictionNumber = computer.computerPredictionNumber;
+            assertEquals(2, predictionNumber);
         }
 
         if (playAgainAnswer.equalsIgnoreCase("no")) {

@@ -1,37 +1,37 @@
 import java.util.Scanner;
 
-// create user class and declare field variables
+// declare field variables
 class User {
     int turn = 1;
     int userOpenHands = 0;
     String userAnswer;
-    int userPredictorNumber;
+    int userPredictionNumber;
 
-    // create user object
+    // create default constructor
     User() {
     }
 
-    // get input from user
+    // prompt user for input
     public void promptUserForInput() {
         Scanner input = new Scanner(System.in);
 
-        // user is the predictor
+        // display message if user is the predictor
         if (turn % 2 != 0) {
             System.out.println("You are the predictor.");
         }
 
-        // user is not the predictor
+        // display message if user is not the predictor
         else {
             System.out.println("You are not the predictor");
         }
 
-        // prompt for input
+        // store input
         System.out.println("What is your input? ");
         userAnswer = input.nextLine();
 
-        // check if input is correct format
-        if (turn % 2 != 0) {  // check if user is predictor
-            if (userAnswer.length() != 3) {  // display message if answer is != 3 characters long
+        // display message if input length is incorrect and user is the predictor
+        if (turn % 2 != 0) {
+            if (userAnswer.length() != 3) {
                 System.out.println("Bad input: correct input should be of the form CC3, " +
                         "where the first two letters indicate [O]pen or [C]losed state for each hand, " +
                         "followed by the prediction (0-4).");
@@ -41,17 +41,18 @@ class User {
             }
 
         }
-
-        if (turn % 2 == 0) {  // if user is not predictor
-            if (userAnswer.length() < 2 || userAnswer.length() > 3) {   // display message if answer length is less than 2 or more than 3
+        // display message if input length is incorrect and user is not the predictor
+        if (turn % 2 == 0) {
+            if (userAnswer.length() < 2 || userAnswer.length() > 3) {
                 System.out.println("Bad input: correct input should be of the form OC, " +
                         "where the letters indicate [O]pen or [C]losed state for each hand.");
 
                 // start over
                 promptUserForInput();
             }
-            
-            else if (userAnswer.length() == 3) { // display message if answer length is 3
+
+            // display message if input length == 3, but user is not the predictor
+            else if (userAnswer.length() == 3) {
                 System.out.println("Bad input: no prediction expected, you are not the predictor.");
 
                 // start over
@@ -60,7 +61,7 @@ class User {
             }
 
 
-        // check if open or closed hands response is correct format
+        // check if input for open or closed hands is correct
         for (int i = 0; i < 2; i++) {
             switch (userAnswer.charAt(i)) {
                 case 'O': break;
@@ -79,13 +80,13 @@ class User {
         }
     }
 
-    // get the user's predictor number
-    public void getUserPredictorNumber() {
-        if (turn % 2 != 0) {  // check that user is predictor
-            userPredictorNumber = Integer.parseInt(userAnswer.substring(2, 3));
+    // if user is predictor, obtain prediction number
+    public void getUserPredictionNumber() {
+        if (turn % 2 != 0) {
+            userPredictionNumber = Integer.parseInt(userAnswer.substring(2, 3));
 
             // Display message if prediction number is not in the range of 1-4
-            if (userPredictorNumber <= 0 || userPredictorNumber > 4) {
+            if (userPredictionNumber <= 0 || userPredictionNumber > 4) {
                 System.out.println("Bad input. Prediction should be in the range of 1-4.");
 
                 // start over
@@ -94,10 +95,8 @@ class User {
         }
     }
 
-        // count number of open hands in user's answer
+        // count and increment number of open hands in user's input
         public void countUserOpenHands () {
-
-            // count open hands and increment userOpenHands variable
             if (userAnswer.charAt(0) == 'O' || userAnswer.charAt(0) == 'o') {
                 userOpenHands++;
             }

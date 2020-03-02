@@ -1,39 +1,46 @@
+import org.junit.jupiter.api.BeforeEach;
 import static org.junit.jupiter.api.Assertions.*;
+
 
 class UserTest {
 
-    User user1 = new User();
+    private User user;
 
-    @org.junit.jupiter.api.Test
-    void promptUserForInput() {
-        user1.setTurn(1);
-        user1.userAnswer = "OO2";
-        assertTrue(user1.userAnswer.length() == 3);
+    @BeforeEach
+    void init () {
+        user = new User();
     }
 
     @org.junit.jupiter.api.Test
-    void getUserPredictorNumber() {
-        user1.setTurn(1);
-        user1.userAnswer = "OO2";
-        user1.userPredictorNumber = Integer.parseInt(user1.userAnswer.substring(2, 3));
-        assertEquals(2, user1.userPredictorNumber);
+    void promptUserForInput() {
+        user.setTurn(1);
+        user.userAnswer = "OO2";
+        assertTrue(user.userAnswer.length() == 3);
+    }
+
+    @org.junit.jupiter.api.Test
+    void getUserPredictionNumber() {
+        user.setTurn(1);
+        user.userAnswer = "OO2";
+        user.userPredictionNumber = Integer.parseInt(user.userAnswer.substring(2, 3));
+        assertEquals(2, user.userPredictionNumber);
     }
 
     @org.junit.jupiter.api.Test
     void countUserOpenHands() {
-        user1.setTurn(1);
-        user1.userAnswer = "OO2";
-        user1.countUserOpenHands();
-        assertEquals(2, user1.userOpenHands);
-        user1.userOpenHands = 0;
-        user1.userAnswer = "oc2";
-        user1.countUserOpenHands();
-        assertEquals(1, user1.userOpenHands);
+        user.setTurn(1);
+        user.userAnswer = "OO2";
+        user.countUserOpenHands();
+        assertEquals(2, user.userOpenHands);
+        user.userOpenHands = 0;
+        user.userAnswer = "oc2";
+        user.countUserOpenHands();
+        assertEquals(1, user.userOpenHands);
     }
 
     @org.junit.jupiter.api.Test
     void setTurn() {
-        user1.setTurn(5);
-        assertEquals(5, user1.turn);
+        user.setTurn(5);
+        assertEquals(5, user.turn);
     }
 }

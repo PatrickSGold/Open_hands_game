@@ -1,45 +1,51 @@
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class ComputerTest {
 
-    Computer computer1 = new Computer();
+    private Computer computer;
+
+    @BeforeEach
+    void init() {
+        computer = new Computer();
+    }
 
     @Test
     void getComputerAnswer() {
-        computer1.getComputerAnswer();
-        if (computer1.turn == 1) {
-            assertEquals(2, computer1.computerAnswer.length());
+        computer.getComputerAnswer();
+        if (computer.turn == 1) {
+            assertEquals(2, computer.computerAnswer.length());
         }
         else {
-            assertEquals(3, computer1.computerAnswer.length());
+            assertEquals(3, computer.computerAnswer.length());
         }
     }
 
     @Test
     void countComputerOpenHands() {
-        computer1.getComputerAnswer();
-        if (computer1.computerAnswer == "OC") {
-            assertEquals(1, computer1.computerOpenHands);
+        computer.getComputerAnswer();
+        if (computer.computerAnswer == "OC") {
+            assertEquals(1, computer.computerOpenHands);
         }
-        if (computer1.computerAnswer == "oo") {
-            assertEquals(2, computer1.computerOpenHands);
+        if (computer.computerAnswer == "oo") {
+            assertEquals(2, computer.computerOpenHands);
         }
     }
 
     @Test
-    void getComputerPredictorNumber() {
-        if (computer1.turn % 2 == 0) {
-            computer1.computerAnswer = "oc2";
-            computer1.getComputerPredictorNumber();
-            assertEquals(2,computer1.computerPredictorNumber);
+    void getComputerPredictionNumber() {
+        if (computer.turn % 2 == 0) {
+            computer.computerAnswer = "oc2";
+            computer.getComputerPredictionNumber();
+            assertEquals(2,computer.computerPredictionNumber);
         }
     }
 
     @Test
     void setTurn() {
-        computer1.setTurn(5);
-        assertEquals(5, computer1.turn);
+        computer.setTurn(5);
+        assertEquals(5, computer.turn);
     }
 }
