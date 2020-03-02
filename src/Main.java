@@ -14,7 +14,7 @@ public class Main {
         int openHands = 0;
         int predictorNumber = 0;
         boolean stopPlaying = false;
-        boolean correctPlayAgainAnswer = false;
+        String playAgainAnswer = "";
 
         // beginning of loop
         while (stopPlaying == false) {
@@ -52,21 +52,20 @@ public class Main {
                 System.out.println("Do you want to play again? ");
 
                 // assign answer to variable
-                String playAgainAnswer = input.nextLine();
+                playAgainAnswer = input.nextLine();
 
 
-                while (correctPlayAgainAnswer == false) {
+                while (stopPlaying == false) {
                     // end the game if user responds "no"
                     if (playAgainAnswer.equalsIgnoreCase("no")) {
                         System.out.println("Goodbye!");
                         stopPlaying = true; // stop playing
-                        correctPlayAgainAnswer = true; // break out of loop
                     }
 
                     // replay the game if user responds "yes"
                     else if (playAgainAnswer.equalsIgnoreCase("yes")) {
                         turn = 1;  // reset turn
-                        correctPlayAgainAnswer = true; // break out of loop
+                        break;
                     }
 
                     // repeat if answer is not "yes" or "no"
@@ -89,7 +88,6 @@ public class Main {
             user1.userOpenHands = 0;
             computer1.computerOpenHands = 0;
             computer1.computerAnswer = "";
-            correctPlayAgainAnswer = false; 
 
         }
 

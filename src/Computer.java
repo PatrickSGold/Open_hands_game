@@ -24,7 +24,7 @@ class Computer {
 
         // if computer is predictor, add predictor number to computer's answer
         if (turn % 2 == 0) {
-            computerAnswer += (int) (Math.random() * 5);
+            computerAnswer += (int)(Math.random() * 5);
         }
     }
 
