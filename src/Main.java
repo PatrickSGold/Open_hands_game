@@ -13,7 +13,6 @@ public class Main {
         int openHands = 0;  // total number of open hands
         int predictionNumber = 0;  // current prediction number
         boolean stopPlaying = false;  // variable to end game
-        String playAgainAnswer = "";  // play again or not response from user
 
         // beginning of game
         while (stopPlaying == false) {
@@ -51,17 +50,17 @@ public class Main {
                 System.out.println("Do you want to play again? ");
 
                 // store the answer
-                playAgainAnswer = input.nextLine();
+                String playAgainAnswer = input.nextLine();
 
                 // end or restart the game
                 while (stopPlaying == false) {
-                    // end the game if user responds "no"
+                    // end the game if user responds "no" to play again
                     if (playAgainAnswer.equalsIgnoreCase("no")) {
                         System.out.println("Goodbye!");
                         stopPlaying = true; // stop playing
                     }
 
-                    // replay the game if user responds "yes"
+                    // replay the game if user responds "yes" to play again
                     else if (playAgainAnswer.equalsIgnoreCase("yes")) {
                         turn = 1;  // reset turn variable for new game
                         break;
