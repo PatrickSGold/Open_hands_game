@@ -12,6 +12,8 @@ class MainTest {
         int turn = 1;
         int openHands = 0;
         int predictorNumber = 0;
+        boolean stopPlaying = false;
+        String playAgainAnswer = "";
 
         user1.setTurn(turn);
         user1.userAnswer = "OO2";
@@ -40,7 +42,9 @@ class MainTest {
             assertEquals(2, predictorNumber);
         }
 
-
+        if (playAgainAnswer.equalsIgnoreCase("no")) {
+            assertTrue(stopPlaying = true);
+        }
     }
 }
 
