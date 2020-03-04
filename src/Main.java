@@ -5,14 +5,13 @@ public class Main {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
 
-        // create user and computer objects
         User user1 = new User();
         Computer computer1 = new Computer();
 
-        int turn = 1;  // the current turn
-        int openHands = 0;  // total number of open hands
-        int predictionNumber = 0;  // current prediction number
-        boolean stopPlaying = false;  // variable to end game
+        int turn = 1;
+        int openHands = 0;
+        int predictionNumber = 0;
+        boolean stopPlaying = false;
 
         // beginning of game
         while (stopPlaying == false) {
@@ -46,27 +45,20 @@ public class Main {
             if (predictionNumber == openHands) {
                 System.out.println("You win!");
 
-                // ask if user wants to replay the game
                 System.out.println("Do you want to play again? ");
 
-                // store the answer
                 String playAgainAnswer = input.nextLine();
 
                 // end or restart the game
                 while (stopPlaying == false) {
-                    // end the game if user responds "no" to play again
                     if (playAgainAnswer.equalsIgnoreCase("no")) {
                         System.out.println("Goodbye!");
                         stopPlaying = true;
                     }
-
-                    // replay the game if user responds "yes" to play again
                     else if (playAgainAnswer.equalsIgnoreCase("yes")) {
-                        turn = 1;  // reset turn variable for new game
+                        turn = 1;  // reset turn variable before new game
                         break;
                     }
-
-                    // repeat if answer is not "yes" or "no"
                     else {
                         System.out.println("Bad input. Please put 'Yes' or 'No'");
 
@@ -76,7 +68,7 @@ public class Main {
             }
 
             // display message if there is no winner
-            if (predictionNumber != openHands) {
+            else {
                 System.out.println("No winner!");
                 turn++; // increment turn variable for next round
             }
