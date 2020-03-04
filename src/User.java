@@ -58,7 +58,7 @@ class User {
                 // start over
                 promptUserForInput();
             }
-            }
+        }
 
 
         // check if input for open or closed hands is correct
@@ -83,7 +83,15 @@ class User {
     // if user is predictor, obtain prediction number
     public void getUserPredictionNumber() {
         if (turn % 2 != 0) {
-            userPredictionNumber = Integer.parseInt(userAnswer.substring(2, 3));
+            try {
+                userPredictionNumber = Integer.parseInt(userAnswer.substring(2, 3));
+            }
+            catch (NumberFormatException e) {
+                System.out.println("Bad input. Prediction should be a number, in the range of 1-4.");
+
+                promptUserForInput();
+                getUserPredictionNumber();
+            }
 
             // Display message if prediction number is not in the range of 1-4
             if (userPredictionNumber <= 0 || userPredictionNumber > 4) {
@@ -91,25 +99,23 @@ class User {
 
                 // start over
                 promptUserForInput();
+                getUserPredictionNumber();
             }
         }
     }
 
-        // count and increment number of open hands in user's input
-        public void countUserOpenHands () {
-            if (userAnswer.charAt(0) == 'O' || userAnswer.charAt(0) == 'o') {
-                userOpenHands++;
-            }
-            if (userAnswer.charAt(1) == 'O' || userAnswer.charAt(1) == 'o') {
-                userOpenHands++;
-            }
+    // count and increment number of open hands in user's input
+    public void countUserOpenHands () {
+        if (userAnswer.charAt(0) == 'O' || userAnswer.charAt(0) == 'o') {
+            userOpenHands++;
         }
-
-        // allow the user to set the turn number
-        public void setTurn ( int currentTurn){
-            turn = currentTurn;
+        if (userAnswer.charAt(1) == 'O' || userAnswer.charAt(1) == 'o') {
+            userOpenHands++;
         }
     }
 
-
-
+    // allow the user to set the turn number
+    public void setTurn ( int currentTurn){
+        turn = currentTurn;
+    }
+}
