@@ -22,19 +22,21 @@ class Computer {
         }
     }
 
-    public void countComputerOpenHands() {
+    public int countComputerOpenHands() {
         if (computerAnswer.charAt(0) == 'O' || computerAnswer.charAt(0) == 'o') {
             computerOpenHands++;
         }
         if (computerAnswer.charAt(1) == 'O' || computerAnswer.charAt(1) == 'o') {
             computerOpenHands++;
         }
+        return computerOpenHands;
     }
 
-    public void getComputerPredictionNumber() {
+    public int getComputerPredictionNumber() {
         if (turn % 2 == 0) {
             computerPredictionNumber = Integer.parseInt(computerAnswer.substring(2, 3));
         }
+        return computerPredictionNumber;
     }
 
     public void setTurn(int currentTurn) {

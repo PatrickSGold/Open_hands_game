@@ -18,9 +18,9 @@ public class Main {
             // run the user class and add user open hands to total open hands
             user1.setTurn(turn);
             user1.promptUserForInput();
-            user1.getUserPredictionNumber();
-            user1.countUserOpenHands();
-            openHands += user1.userOpenHands;
+            user1.userPredictionNumber(user1.getUserAnswer());
+            user1.countUserOpenHands(user1.getUserAnswer());
+            openHands += user1.getUserOpenHands();
 
             // run the computer class and add computer open hands to total open hands
             computer1.setTurn(turn);
@@ -31,7 +31,7 @@ public class Main {
 
             // Assign relevant prediction number to the predictionNumber variable
             if (turn % 2 != 0) {
-                predictionNumber = user1.userPredictionNumber;
+                predictionNumber = user1.getUserPredictionNumber();
             } else {
                 computer1.getComputerPredictionNumber();
                 predictionNumber = computer1.computerPredictionNumber;
@@ -75,7 +75,7 @@ public class Main {
 
             // reset relevant field variables for next round or new game
             openHands = 0;
-            user1.userOpenHands = 0;
+            user1.setUserOpenHands(0);
             computer1.computerOpenHands = 0;
             computer1.computerAnswer = "";
 

@@ -1,12 +1,12 @@
 import java.util.Scanner;
 
 class User {
-    int turn = 1;
-    int userOpenHands = 0;
-    String userAnswer;
-    int userPredictionNumber;
+    private int turn = 1;
+    private int userOpenHands = 0;
+    private String userAnswer;
+    private int userPredictionNumber;
 
-    public void promptUserForInput() {
+    public String promptUserForInput() {
         Scanner input = new Scanner(System.in);
 
         // display message if user is the predictor
@@ -23,7 +23,10 @@ class User {
         userAnswer = input.nextLine();
 
         checkInput();
+
+        return userAnswer;
     }
+
     public void checkInput() {
         // display message if input length is incorrect and user is the predictor
         if (turn % 2 != 0) {
@@ -35,6 +38,7 @@ class User {
                 promptUserForInput();  // start over
             }
         }
+
         // display message if input length is incorrect and user is not the predictor
         else {
             if (userAnswer.length() < 2 || userAnswer.length() > 3) {
@@ -60,9 +64,7 @@ class User {
                 case 'C': break;
                 case 'c': break;
                 default:  // display message if input is not allowed
-                    System.out.println("Bad input: correct input should be of the form CC3, " +
-                            "where the first two letters indicate [O]pen or [C]losed state for each hand, " +
-                            "followed by the prediction (0-4).");
+                    System.out.println("Bad input: the first two letters indicate [O]pen or [C]losed state for each hand");
 
                     promptUserForInput();
                     break;
@@ -70,7 +72,7 @@ class User {
         }
     }
 
-    public void getUserPredictionNumber() {
+    public int userPredictionNumber(String userAnswer) {
         if (turn % 2 != 0) {
             try {
                 userPredictionNumber = Integer.parseInt(userAnswer.substring(2, 3));
@@ -79,7 +81,7 @@ class User {
                 System.out.println("Bad input. Prediction should be a number, in the range of 1-4.");
 
                 promptUserForInput();
-                getUserPredictionNumber();
+                userPredictionNumber(getUserAnswer());
             }
 
             // Display message if prediction number is not in the range of 1-4
@@ -87,12 +89,13 @@ class User {
                 System.out.println("Bad input. Prediction should be in the range of 1-4.");
 
                 promptUserForInput();
-                getUserPredictionNumber();
+                userPredictionNumber(getUserAnswer());
             }
         }
+        return userPredictionNumber;
     }
 
-    public void countUserOpenHands () {
+    public void countUserOpenHands(String userAnswer) {
         if (userAnswer.charAt(0) == 'O' || userAnswer.charAt(0) == 'o') {
             userOpenHands++;
         }
@@ -101,7 +104,28 @@ class User {
         }
     }
 
-    public void setTurn ( int currentTurn){
+    public void setTurn(int currentTurn) {
         turn = currentTurn;
     }
+
+    public void setUserAnswer(String newUserAnswer) {
+        userAnswer = newUserAnswer;
+    }
+
+    public String getUserAnswer() {
+        return userAnswer;
+    }
+
+    public int getUserPredictionNumber() {
+        return userPredictionNumber;
+    }
+
+    public int getUserOpenHands() {
+        return userOpenHands;
+    }
+
+    public void setUserOpenHands(int newUserOpenHands) {
+        userOpenHands = newUserOpenHands;
+    }
 }
+

@@ -14,33 +14,23 @@ class UserTest {
     @org.junit.jupiter.api.Test
     void promptUserForInput() {
         user.setTurn(1);
-        user.userAnswer = "OO2";
-        assertTrue(user.userAnswer.length() == 3);
+        user.setUserAnswer("OO2");
+        assertTrue(user.getUserAnswer().length() == 3);
     }
 
     @org.junit.jupiter.api.Test
     void getUserPredictionNumber() {
         user.setTurn(1);
-        user.userAnswer = "OO2";
-        user.userPredictionNumber = Integer.parseInt(user.userAnswer.substring(2, 3));
-        assertEquals(2, user.userPredictionNumber);
+        user.userPredictionNumber("OO3");
+        assertEquals(3, user.getUserPredictionNumber());
     }
 
     @org.junit.jupiter.api.Test
     void countUserOpenHands() {
         user.setTurn(1);
-        user.userAnswer = "OO2";
-        user.countUserOpenHands();
-        assertEquals(2, user.userOpenHands);
-        user.userOpenHands = 0;
-        user.userAnswer = "oc2";
-        user.countUserOpenHands();
-        assertEquals(1, user.userOpenHands);
+        user.countUserOpenHands("OO1");
+        assertEquals(2, user.getUserOpenHands());
     }
 
-    @org.junit.jupiter.api.Test
-    void setTurn() {
-        user.setTurn(5);
-        assertEquals(5, user.turn);
-    }
+
 }
