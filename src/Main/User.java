@@ -1,9 +1,10 @@
+package Main;
+
 import java.util.Scanner;
 
-class User {
+public class User {
 
     private int turn = 1;
-    private int userOpenHands = 0;
     private String userAnswer;
     private int userPredictionNumber;
 
@@ -11,7 +12,7 @@ class User {
         Scanner input = new Scanner(System.in);
 
         // display message if user is the predictor
-        if (turn % 2 != 0) {
+        if (checkIfUserIsPredictor() == true) {
             System.out.println("You are the predictor.");
         }
 
@@ -35,17 +36,6 @@ class User {
             checkInputLengthUserNotPredictor(getUserAnswer());
         }
         checkIfOpenClosedExist(getUserAnswer());
-    }
-
-    private boolean checkIfUserIsPredictor() {
-        boolean userIsPredictor;
-
-        if (turn % 2 != 0) {
-            userIsPredictor = true;
-        } else {
-            userIsPredictor = false;
-        }
-        return userIsPredictor;
     }
 
     private void checkInputLengthUserIsPredictor(String userAnswer) {
@@ -93,7 +83,8 @@ class User {
     private int checkUserPredictionNumber(String userAnswer) {
         try {
             userPredictionNumber = Integer.parseInt(userAnswer.substring(2, 3));
-        } catch (NumberFormatException e) {
+        }
+        catch (NumberFormatException e) {
             System.out.println("Bad input. Prediction should be a number, in the range of 1-4.");
 
             promptUserForInput();
@@ -109,13 +100,25 @@ class User {
         return userPredictionNumber;
     }
 
-    public void countUserOpenHands(String userAnswer) {
+    public int countUserOpenHands(String userAnswer) {
+        int userOpenHands = 0;
+
         if (userAnswer.charAt(0) == 'O' || userAnswer.charAt(0) == 'o') {
             userOpenHands++;
         }
         if (userAnswer.charAt(1) == 'O' || userAnswer.charAt(1) == 'o') {
             userOpenHands++;
         }
+        return userOpenHands;
+    }
+
+    private boolean checkIfUserIsPredictor() {
+        boolean userIsPredictor = false;
+
+        if (turn % 2 != 0) {
+            userIsPredictor = true;
+        }
+        return userIsPredictor;
     }
 
     public void setTurn(int currentTurn) {
@@ -134,12 +137,8 @@ class User {
         return userPredictionNumber;
     }
 
-    public int getUserOpenHands() {
-        return userOpenHands;
-    }
-
-    public void setUserOpenHands(int newUserOpenHands) {
-        userOpenHands = newUserOpenHands;
+    public boolean getIfUserIsPredictor() {
+        return checkIfUserIsPredictor();
     }
 }
 

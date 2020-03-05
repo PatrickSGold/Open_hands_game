@@ -1,3 +1,5 @@
+package Main;
+
 import java.util.Scanner;
 
 public class Main {
@@ -18,26 +20,22 @@ public class Main {
             // run the user class and add user open hands to total open hands
             user1.setTurn(turn);
             user1.promptUserForInput();
-            user1.countUserOpenHands(user1.getUserAnswer());
-            openHands += user1.getUserOpenHands();
+            openHands += user1.countUserOpenHands(user1.getUserAnswer());
 
             // run the computer class and add computer open hands to total open hands
             computer1.setTurn(turn);
-            computer1.getComputerAnswer();
-            computer1.getComputerPredictionNumber();
-            computer1.countComputerOpenHands();
-            openHands += computer1.computerOpenHands;
+            computer1.computerAnswer();
+            openHands += computer1.countComputerOpenHands(computer1.getComputerAnswer());
 
             // Assign relevant prediction number to the predictionNumber variable
-            if (turn % 2 != 0) {
+            if (user1.getIfUserIsPredictor() == true) {
                 predictionNumber = user1.getUserPredictionNumber();
-            } else {
-                computer1.getComputerPredictionNumber();
-                predictionNumber = computer1.computerPredictionNumber;
+            }
+            else {
+                predictionNumber = computer1.computerPredictionNumber();
             }
 
-            // display the computer's input and total number of open hands
-            System.out.println("The computers response is: " + computer1.computerAnswer);
+            System.out.println("The computers response is: " + computer1.getComputerAnswer());
             System.out.println("Total number of open hands: " + openHands);
 
             // display winning message when game is won
@@ -55,7 +53,7 @@ public class Main {
                         stopPlaying = true;
                     }
                     else if (playAgainAnswer.equalsIgnoreCase("yes")) {
-                        turn = 1;  // reset turn variable before new game
+                        turn = 1;  // reset turn before new game
                         break;
                     }
                     else {
@@ -69,14 +67,12 @@ public class Main {
             // display message if there is no winner
             else {
                 System.out.println("No winner!");
-                turn++; // increment turn variable for next round
+                turn++; // increment turn for next round
             }
 
-            // reset relevant field variables for next round or new game
+            // reset openHands and computerAnswer for next round or the new game
             openHands = 0;
-            user1.setUserOpenHands(0);
-            computer1.computerOpenHands = 0;
-            computer1.computerAnswer = "";
+            computer1.setComputerAnswer("");
 
         }
 
