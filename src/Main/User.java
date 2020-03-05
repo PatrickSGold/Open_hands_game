@@ -30,6 +30,7 @@ public class User {
             checkInputLengthUserIsPredictor(getUserAnswer());
             calculateAndCheckUserPredictionNumber(getUserAnswer());
         }
+
         else {
             checkInputLengthUserNotPredictor(getUserAnswer());
         }
@@ -70,16 +71,18 @@ public class User {
                 || userAnswer.charAt(0) == 'c')
                 &&
                 (userAnswer.charAt(1) == 'O'
-                || userAnswer.charAt(1) == 'o'
-                || userAnswer.charAt(1) == 'C'
-                || userAnswer.charAt(1) == 'c')) {
+                        || userAnswer.charAt(1) == 'o'
+                        || userAnswer.charAt(1) == 'C'
+                        || userAnswer.charAt(1) == 'c')) {
 
             opedClosedExists = true;
         }
+
         else {
             System.out.println("Bad input: the first two letters should indicate [O]pen or [C]losed state for each hand.");
             promptUserForInput();
         }
+
         return opedClosedExists;
     }
 
@@ -87,63 +90,63 @@ public class User {
         try {
             userPredictionNumber = Integer.parseInt(userAnswer.substring(2, 3));
         }
+
         catch (NumberFormatException e) {
             System.out.println("Bad input. Prediction should be a number, in the range of 1-4.");
 
             promptUserForInput();
         }
+
         checkUserPredictionNumberRange();
         return userPredictionNumber;
     }
 
-    public boolean checkUserPredictionNumberRange() {   // made public instead of private for testing
-        boolean inRange = false;
+    public void checkUserPredictionNumberRange() {   // made public instead of private for testing
         if (userPredictionNumber <= 0 || userPredictionNumber > 4) {
             System.out.println("Bad input. Prediction should be in the range of 1-4.");
 
             promptUserForInput();
         }
-        else {
-            inRange = true;
+    }
+
+        public int countUserOpenHands (String userAnswer){
+            int userOpenHands = 0;
+
+            if (userAnswer.charAt(0) == 'O' || userAnswer.charAt(0) == 'o') {
+                userOpenHands++;
+            }
+
+            if (userAnswer.charAt(1) == 'O' || userAnswer.charAt(1) == 'o') {
+                userOpenHands++;
+            }
+
+            return userOpenHands;
         }
-        return inRange;
-    }
 
-    public int countUserOpenHands(String userAnswer) {
-        int userOpenHands = 0;
+        public boolean checkIfUserIsPredictor ( int turn){  // made public instead of private for testing
+            boolean userIsPredictor = false;
 
-        if (userAnswer.charAt(0) == 'O' || userAnswer.charAt(0) == 'o') {
-            userOpenHands++;
+            if (turn % 2 != 0) {
+                userIsPredictor = true;
+            }
+            return userIsPredictor;
         }
-        if (userAnswer.charAt(1) == 'O' || userAnswer.charAt(1) == 'o') {
-            userOpenHands++;
+
+        public void setTurn ( int currentTurn){
+            turn = currentTurn;
         }
-        return userOpenHands;
-    }
 
-    public boolean checkIfUserIsPredictor(int turn) {  // made public instead of private for testing
-        boolean userIsPredictor = false;
-
-        if (turn % 2 != 0) {
-            userIsPredictor = true;
+        public String getUserAnswer () {
+            return userAnswer;
         }
-        return userIsPredictor;
+
+        public int getUserPredictionNumber () {
+            return userPredictionNumber;
+        }
+
+        public boolean getCheckIfUserIsPredictor () {
+            return checkIfUserIsPredictor(turn);
+        }
     }
 
-    public void setTurn(int currentTurn) {
-        turn = currentTurn;
-    }
-
-    public String getUserAnswer() {
-        return userAnswer;
-    }
-
-    public int getUserPredictionNumber() {
-        return userPredictionNumber;
-    }
-
-    public boolean getCheckIfUserIsPredictor() {
-        return checkIfUserIsPredictor(turn);
-    }
-}
 
