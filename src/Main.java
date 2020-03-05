@@ -18,7 +18,6 @@ public class Main {
             // run the user class and add user open hands to total open hands
             user1.setTurn(turn);
             user1.promptUserForInput();
-            user1.userPredictionNumber(user1.getUserAnswer());
             user1.countUserOpenHands(user1.getUserAnswer());
             openHands += user1.getUserOpenHands();
 

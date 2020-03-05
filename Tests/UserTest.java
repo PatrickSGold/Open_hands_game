@@ -20,9 +20,7 @@ class UserTest {
 
     @org.junit.jupiter.api.Test
     void getUserPredictionNumber() {
-        user.setTurn(1);
-        user.userPredictionNumber("OO3");
-        assertEquals(3, user.getUserPredictionNumber());
+
     }
 
     @org.junit.jupiter.api.Test
