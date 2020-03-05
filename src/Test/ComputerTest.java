@@ -8,6 +8,7 @@ class ComputerTest {
 
     @Test
     void computerAnswer() {
+        assertDoesNotThrow();
     }
 
     @Test

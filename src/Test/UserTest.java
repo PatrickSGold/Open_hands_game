@@ -9,6 +9,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Test;
 
 class UserTest {
+asdasd
 
     @org.junit.jupiter.api.Test
     void promptUserForInput() {
