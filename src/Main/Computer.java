@@ -5,8 +5,7 @@ public class Computer {
     private String computerAnswer = "";
 
     public void computerAnswer() {
-
-        // loop to generate total number of open or closed hands in computer's input
+        // loop to generate open and closed hands in computer's answer
         for (int i = 0; i < 2; i++) {
             // random number < 50 == open hand, random number > 50 == closed hand
             if ((int)(Math.random() * 101) < 50) {
@@ -40,16 +39,16 @@ public class Computer {
         return computerPredictionNumber;
     }
 
-    public void setTurn(int currentTurn) {
-        turn = currentTurn;
-    }
-
-    private boolean checkIfComputerIsPredictor(int turn) {
+    public boolean checkIfComputerIsPredictor(int turn) {  // made public instead of private for testing
         boolean computerIsPredictor = false;
         if (turn % 2 == 0) {
             computerIsPredictor = true;
         }
         return computerIsPredictor;
+    }
+
+    public void setTurn(int currentTurn) {
+        turn = currentTurn;
     }
 
     public void setComputerAnswer(String newComputerAnswer) {

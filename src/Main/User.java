@@ -11,12 +11,10 @@ public class User {
     public void promptUserForInput() {
         Scanner input = new Scanner(System.in);
 
-        // display message if user is the predictor
-        if (checkIfUserIsPredictor() == true) {
+        if (checkIfUserIsPredictor(turn) == true) {
             System.out.println("You are the predictor.");
         }
 
-        // display message if user is not the predictor
         else {
             System.out.println("You are not the predictor");
         }
@@ -28,9 +26,9 @@ public class User {
     }
 
     private void checkAllInput(String userAnswer) {
-        if (checkIfUserIsPredictor() == true) {
+        if (checkIfUserIsPredictor(turn) == true) {
             checkInputLengthUserIsPredictor(getUserAnswer());
-            checkUserPredictionNumber(getUserAnswer());
+            calculateAndCheckUserPredictionNumber(getUserAnswer());
         }
         else {
             checkInputLengthUserNotPredictor(getUserAnswer());
@@ -63,7 +61,9 @@ public class User {
         }
     }
 
-    private void checkIfOpenClosedExist(String userAnswer) {
+    public boolean checkIfOpenClosedExist(String userAnswer) {  // made public instead of private for testing
+        boolean opedClosedExists = false;
+
         if ((userAnswer.charAt(0) == 'O'
                 || userAnswer.charAt(0) == 'o'
                 || userAnswer.charAt(0) == 'C'
@@ -73,14 +73,17 @@ public class User {
                 || userAnswer.charAt(1) == 'o'
                 || userAnswer.charAt(1) == 'C'
                 || userAnswer.charAt(1) == 'c')) {
+
+            opedClosedExists = true;
         }
         else {
             System.out.println("Bad input: the first two letters should indicate [O]pen or [C]losed state for each hand.");
             promptUserForInput();
         }
+        return opedClosedExists;
     }
 
-    private int checkUserPredictionNumber(String userAnswer) {
+    public int calculateAndCheckUserPredictionNumber(String userAnswer) {  // made public instead of private for testing
         try {
             userPredictionNumber = Integer.parseInt(userAnswer.substring(2, 3));
         }
@@ -89,15 +92,21 @@ public class User {
 
             promptUserForInput();
         }
+        checkUserPredictionNumberRange();
+        return userPredictionNumber;
+    }
 
-        // Display message if prediction number is not in the range of 1-4
+    public boolean checkUserPredictionNumberRange() {   // made public instead of private for testing
+        boolean inRange = false;
         if (userPredictionNumber <= 0 || userPredictionNumber > 4) {
             System.out.println("Bad input. Prediction should be in the range of 1-4.");
 
             promptUserForInput();
         }
-
-        return userPredictionNumber;
+        else {
+            inRange = true;
+        }
+        return inRange;
     }
 
     public int countUserOpenHands(String userAnswer) {
@@ -112,7 +121,7 @@ public class User {
         return userOpenHands;
     }
 
-    private boolean checkIfUserIsPredictor() {
+    public boolean checkIfUserIsPredictor(int turn) {  // made public instead of private for testing
         boolean userIsPredictor = false;
 
         if (turn % 2 != 0) {
@@ -125,10 +134,6 @@ public class User {
         turn = currentTurn;
     }
 
-    public void setUserAnswer(String newUserAnswer) {
-        userAnswer = newUserAnswer;
-    }
-
     public String getUserAnswer() {
         return userAnswer;
     }
@@ -137,8 +142,8 @@ public class User {
         return userPredictionNumber;
     }
 
-    public boolean getIfUserIsPredictor() {
-        return checkIfUserIsPredictor();
+    public boolean getCheckIfUserIsPredictor() {
+        return checkIfUserIsPredictor(turn);
     }
 }
 

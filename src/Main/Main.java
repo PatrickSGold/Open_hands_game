@@ -28,14 +28,14 @@ public class Main {
             openHands += computer1.countComputerOpenHands(computer1.getComputerAnswer());
 
             // Assign relevant prediction number to the predictionNumber variable
-            if (user1.getIfUserIsPredictor() == true) {
+            if (user1.getCheckIfUserIsPredictor() == true) {
                 predictionNumber = user1.getUserPredictionNumber();
             }
             else {
                 predictionNumber = computer1.computerPredictionNumber();
             }
 
-            System.out.println("The computers response is: " + computer1.getComputerAnswer());
+            System.out.println("The computers answer is: " + computer1.getComputerAnswer());
             System.out.println("Total number of open hands: " + openHands);
 
             // display winning message when game is won
@@ -75,7 +75,6 @@ public class Main {
             computer1.setComputerAnswer("");
 
         }
-
     }
 }
 
