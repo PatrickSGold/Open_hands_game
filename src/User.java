@@ -1,6 +1,7 @@
 import java.util.Scanner;
 
 class User {
+
     private int turn = 1;
     private int userOpenHands = 0;
     private String userAnswer;
@@ -8,6 +9,8 @@ class User {
 
     public String promptUserForInput() {
         Scanner input = new Scanner(System.in);
+
+        System.out.println("IT WORKS MF!");
 
         // display message if user is the predictor
         if (turn % 2 != 0) {
