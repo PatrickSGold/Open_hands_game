@@ -27,7 +27,7 @@ public class Main {
             computer.generateComputerOpenOrClosedAnswer();
             openHands += computer.countComputerOpenHands(computer.getComputerAnswer());
 
-            // Assign relevant prediction number to the predictionNumber variable
+            // Assign relevant prediction number
             if (user.getCheckIfUserIsPredictor() == true) {
                 predictionNumber = user.getUserPredictionNumber();
             }
