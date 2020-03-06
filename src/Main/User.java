@@ -109,45 +109,43 @@ public class User {
         }
     }
 
-        public int countUserOpenHands(String userAnswer){
-            int userOpenHands = 0;
+    public int countUserOpenHands(String userAnswer) {
+        int userOpenHands = 0;
 
-            if (userAnswer.charAt(0) == 'O' || userAnswer.charAt(0) == 'o') {
-                userOpenHands++;
-            }
-
-            if (userAnswer.charAt(1) == 'O' || userAnswer.charAt(1) == 'o') {
-                userOpenHands++;
-            }
-
-            return userOpenHands;
+        if (userAnswer.charAt(0) == 'O' || userAnswer.charAt(0) == 'o') {
+            userOpenHands++;
         }
 
-        public boolean checkIfUserIsPredictor(){  // made public instead of private for testing
-            if (this.turn % 2 != 0) {
-                return true;
-            }
-
-            else {
-                return false;
-            }
+        if (userAnswer.charAt(1) == 'O' || userAnswer.charAt(1) == 'o') {
+            userOpenHands++;
         }
 
-        public void setTurn ( int currentTurn) {
+        return userOpenHands;
+    }
+
+    public boolean checkIfUserIsPredictor() {  // made public instead of private for testing
+        if (this.turn % 2 != 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public void setTurn ( int currentTurn) {
         turn = currentTurn;
-        }
+    }
 
-        public String getUserAnswer () {
+    public String getUserAnswer () {
         return userAnswer;
-        }
+    }
 
-        public int getUserPredictionNumber () {
+    public int getUserPredictionNumber () {
         return userPredictionNumber;
-        }
+    }
 
-        public boolean getCheckIfUserIsPredictor () {
-            return checkIfUserIsPredictor();
-        }
+    public boolean getCheckIfUserIsPredictor () {
+        return checkIfUserIsPredictor();
+    }
     }
 
 
