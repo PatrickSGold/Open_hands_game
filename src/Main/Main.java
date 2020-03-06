@@ -41,9 +41,7 @@ public class Main {
             // display winning message when game is won
             if (predictionNumber == openHands) {
                 System.out.println("You win!");
-
                 System.out.println("Do you want to play again? ");
-
                 String playAgainAnswer = input.nextLine();
 
                 // end or restart the game
