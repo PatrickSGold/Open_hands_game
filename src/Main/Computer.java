@@ -34,7 +34,7 @@ public class Computer {
         int computerPredictionNumber = 0;
 
         try {
-            if (checkIfComputerIsPredictor(this.turn) == true) {
+            if (checkIfComputerIsPredictor() == true) {
                 computerAnswer += random.nextInt(4 - 1) + 1;  // generate prediction number
                 computerPredictionNumber = Integer.parseInt(computerAnswer.substring(2, 3));
             }
@@ -47,12 +47,12 @@ public class Computer {
         }
 
 
-    public boolean checkIfComputerIsPredictor(int turn) {  // made public instead of private for testing
-        boolean computerIsPredictor = false;
-        if (turn % 2 == 0) {
-            computerIsPredictor = true;
+    public boolean checkIfComputerIsPredictor() {  // made public instead of private for testing
+        if (this.turn % 2 == 0) {
+            return true;
+        } else {
+            return false;
         }
-        return computerIsPredictor;
     }
 
     public void setTurn(int currentTurn) {

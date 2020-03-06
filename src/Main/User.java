@@ -11,7 +11,7 @@ public class User {
     public void promptUserForInput() {
         Scanner input = new Scanner(System.in);
 
-        if (checkIfUserIsPredictor(this.turn) == true) {
+        if (checkIfUserIsPredictor() == true) {
             System.out.println("You are the predictor.");
         }
 
@@ -26,7 +26,7 @@ public class User {
     }
 
     private void checkAllInput(String userAnswer) {
-        if (checkIfUserIsPredictor(this.turn) == true) {
+        if (checkIfUserIsPredictor() == true) {
             checkInputLengthUserIsPredictor(getUserAnswer());
             calculateAndCheckUserPredictionNumber(getUserAnswer());
         }
@@ -63,8 +63,6 @@ public class User {
     }
 
     public boolean checkIfOpenClosedExist(String userAnswer) {  // made public instead of private for testing
-        boolean opedClosedExists = false;
-
         if ((userAnswer.charAt(0) == 'O'
                 || userAnswer.charAt(0) == 'o'
                 || userAnswer.charAt(0) == 'C'
@@ -75,7 +73,7 @@ public class User {
                         || userAnswer.charAt(1) == 'C'
                         || userAnswer.charAt(1) == 'c')) {
 
-            opedClosedExists = true;
+            return true;
         }
 
         else {
@@ -83,7 +81,7 @@ public class User {
             promptUserForInput();
         }
 
-        return opedClosedExists;
+        return false;
     }
 
     public int calculateAndCheckUserPredictionNumber(String userAnswer) {  // made public instead of private for testing
@@ -123,13 +121,13 @@ public class User {
             return userOpenHands;
         }
 
-        public boolean checkIfUserIsPredictor(int turn){  // made public instead of private for testing
-            boolean userIsPredictor = false;
-
+        public boolean checkIfUserIsPredictor(){  // made public instead of private for testing
             if (this.turn % 2 != 0) {
-                userIsPredictor = true;
+                return true;
             }
-            return userIsPredictor;
+            else {
+                return false;
+            }
         }
 
         public void setTurn ( int currentTurn) {
@@ -145,7 +143,7 @@ public class User {
         }
 
         public boolean getCheckIfUserIsPredictor () {
-            return checkIfUserIsPredictor(turn);
+            return checkIfUserIsPredictor();
         }
     }
 

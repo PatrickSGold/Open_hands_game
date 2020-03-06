@@ -55,8 +55,10 @@ class ComputerTest {
 
     @Test
     void checkIfComputerIsPredictor() {
-        assertTrue(computer.checkIfComputerIsPredictor(2));
-        assertFalse(computer.checkIfComputerIsPredictor(1));
+        computer.setTurn(2);
+        assertTrue(computer.checkIfComputerIsPredictor());
+        computer.setTurn(1);
+        assertFalse(computer.checkIfComputerIsPredictor());
 
     }
 

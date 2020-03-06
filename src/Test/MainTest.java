@@ -26,7 +26,7 @@ class MainTest {
     void checkIfPredictionNumberIsAssignedToUserOnUnevenTurns() {
         int predictionNumber = 0;
 
-        if (user.checkIfUserIsPredictor(1) == true) {
+        if (user.checkIfUserIsPredictor() == true) {
             predictionNumber = user.getUserPredictionNumber();
         }
         else {
@@ -39,10 +39,10 @@ class MainTest {
 
     @Test
     void checkIfPredictionNumberIsAssignedToComputerOnEvenTurns() {
-        user.checkIfUserIsPredictor(1);
+        user.checkIfUserIsPredictor();
 
         int predictionNumber;
-        if (user.checkIfUserIsPredictor(2) == true) {
+        if (user.checkIfUserIsPredictor() == true) {
             predictionNumber = user.getUserPredictionNumber();
         }
         else {

@@ -31,8 +31,10 @@ class UserTest {
 
     @org.junit.jupiter.api.Test
     void checkIfUserIsPredictor() {
-        assertTrue(user.checkIfUserIsPredictor(1));
-        assertFalse(user.checkIfUserIsPredictor(2));
+        user.setTurn(1);
+        assertTrue(user.checkIfUserIsPredictor());
+        user.setTurn(2);
+        assertFalse(user.checkIfUserIsPredictor());
     }
 
 
