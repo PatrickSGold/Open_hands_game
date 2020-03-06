@@ -16,6 +16,7 @@ class UserTest {
     @org.junit.jupiter.api.Test
     void checkIfOpenClosedExist() {
         assertTrue(user.checkIfOpenClosedExist("OC2"));
+        assertFalse(user.checkIfOpenClosedExist("AC2"));
     }
 
     @org.junit.jupiter.api.Test

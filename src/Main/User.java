@@ -36,6 +36,9 @@ public class User {
         }
 
         checkIfOpenClosedExist(getUserAnswer());
+        if (checkIfOpenClosedExist(getUserAnswer()) == false) {
+            displayErrorMessageIfOpenClosedDoNotExist();
+        }
     }
 
     private void checkInputLengthUserIsPredictor(String userAnswer) {
@@ -64,7 +67,7 @@ public class User {
     }
 
     public boolean checkIfOpenClosedExist(String userAnswer) {  // made public instead of private for testing
-        if ((userAnswer.charAt(0) == 'O'
+        return (userAnswer.charAt(0) == 'O'
                 || userAnswer.charAt(0) == 'o'
                 || userAnswer.charAt(0) == 'C'
                 || userAnswer.charAt(0) == 'c')
@@ -72,18 +75,15 @@ public class User {
                 (userAnswer.charAt(1) == 'O'
                         || userAnswer.charAt(1) == 'o'
                         || userAnswer.charAt(1) == 'C'
-                        || userAnswer.charAt(1) == 'c')) {
-
-            return true;
+                        || userAnswer.charAt(1) == 'c');
         }
 
-        else {
+    public void displayErrorMessageIfOpenClosedDoNotExist() {
+        if (!checkIfOpenClosedExist(getUserAnswer())) {
             System.out.println("Bad input: the first two letters should indicate [O]pen or [C]losed state for each hand.");
 
             promptUserForInput();
         }
-
-        return false;
     }
 
     public int calculateAndCheckUserPredictionNumber(String userAnswer) {  // made public instead of private for testing
@@ -124,11 +124,7 @@ public class User {
     }
 
     public boolean checkIfUserIsPredictor() {  // made public instead of private for testing
-        if (this.turn % 2 != 0) {
-            return true;
-        } else {
-            return false;
-        }
+        return this.turn % 2 != 0;
     }
 
     public void setTurn ( int currentTurn) {

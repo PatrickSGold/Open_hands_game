@@ -52,13 +52,8 @@ public class Computer {
 
 
     public boolean checkIfComputerIsPredictor() {  // made public instead of private for testing
-        if (this.turn % 2 == 0) {
-            return true;
-        }
+        return this.turn % 2 == 0;
 
-        else {
-            return false;
-        }
     }
 
     public void setTurn(int currentTurn) {
