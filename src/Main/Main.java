@@ -56,7 +56,6 @@ public class Main {
                     }
                     else {
                         System.out.println("Bad input. Please put 'Yes' or 'No'");
-
                         playAgainAnswer = input.nextLine();
                     }
                 }
