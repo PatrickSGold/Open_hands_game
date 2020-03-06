@@ -53,8 +53,4 @@ class MainTest {
         assertTrue(predictionNumber == computer.computerPredictionNumber());  // but only this is supposed to be true
     }
 
-    @Test
-    void checkIfPredictionNumberEqualsOpenHands() {
-
-    }
 }

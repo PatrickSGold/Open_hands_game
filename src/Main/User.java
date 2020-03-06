@@ -11,7 +11,7 @@ public class User {
     public void promptUserForInput() {
         Scanner input = new Scanner(System.in);
 
-        if (checkIfUserIsPredictor(turn) == true) {
+        if (checkIfUserIsPredictor(this.turn) == true) {
             System.out.println("You are the predictor.");
         }
 
@@ -26,7 +26,7 @@ public class User {
     }
 
     private void checkAllInput(String userAnswer) {
-        if (checkIfUserIsPredictor(turn) == true) {
+        if (checkIfUserIsPredictor(this.turn) == true) {
             checkInputLengthUserIsPredictor(getUserAnswer());
             calculateAndCheckUserPredictionNumber(getUserAnswer());
         }
@@ -109,7 +109,7 @@ public class User {
         }
     }
 
-        public int countUserOpenHands (String userAnswer){
+        public int countUserOpenHands(String userAnswer){
             int userOpenHands = 0;
 
             if (userAnswer.charAt(0) == 'O' || userAnswer.charAt(0) == 'o') {
@@ -123,25 +123,25 @@ public class User {
             return userOpenHands;
         }
 
-        public boolean checkIfUserIsPredictor ( int turn){  // made public instead of private for testing
+        public boolean checkIfUserIsPredictor(int turn){  // made public instead of private for testing
             boolean userIsPredictor = false;
 
-            if (turn % 2 != 0) {
+            if (this.turn % 2 != 0) {
                 userIsPredictor = true;
             }
             return userIsPredictor;
         }
 
-        public void setTurn ( int currentTurn){
-            turn = currentTurn;
+        public void setTurn ( int currentTurn) {
+        turn = currentTurn;
         }
 
         public String getUserAnswer () {
-            return userAnswer;
+        return userAnswer;
         }
 
         public int getUserPredictionNumber () {
-            return userPredictionNumber;
+        return userPredictionNumber;
         }
 
         public boolean getCheckIfUserIsPredictor () {

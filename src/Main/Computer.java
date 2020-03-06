@@ -1,14 +1,15 @@
 package Main;
+import java.util.Random;
 
 public class Computer {
+    Random random = new Random();
     private int turn = 1;
     private String computerAnswer = "";
 
-    public void computerAnswer() {
-        // loop to generate open and closed hands in computer's answer
-        for (int i = 0; i < 2; i++) {
-            // random number < 50 == open hand, random number > 50 == closed hand
-            if ((int)(Math.random() * 101) < 50) {
+    public void generateComputerOpenOrClosedAnswer() {
+        while (computerAnswer.length() != 2) {
+            // if random number < 50 == open hand, else == closed hand
+            if ((random.nextInt(100 - 1) + 1) < 50) {
                 computerAnswer += 'O';
             }
             else {
@@ -32,12 +33,19 @@ public class Computer {
     public int computerPredictionNumber() {
         int computerPredictionNumber = 0;
 
-        if (checkIfComputerIsPredictor(turn) == true) {
-            computerAnswer += (int)(Math.random() * 5);  // generate prediction number
-            computerPredictionNumber = Integer.parseInt(computerAnswer.substring(2, 3));
+        try {
+            if (checkIfComputerIsPredictor(this.turn) == true) {
+                computerAnswer += random.nextInt(4 - 1) + 1;  // generate prediction number
+                computerPredictionNumber = Integer.parseInt(computerAnswer.substring(2, 3));
+            }
         }
-        return computerPredictionNumber;
-    }
+        catch (NumberFormatException e) {
+            System.out.println("The generated prediction number is not a number");
+        }
+
+            return computerPredictionNumber;
+        }
+
 
     public boolean checkIfComputerIsPredictor(int turn) {  // made public instead of private for testing
         boolean computerIsPredictor = false;

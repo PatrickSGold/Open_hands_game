@@ -1,7 +1,6 @@
 package Test;
 import Main.User;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -15,22 +14,6 @@ class UserTest {
     }
 
     @org.junit.jupiter.api.Test
-    void promptUserForInput() {
-    }
-
-    @org.junit.jupiter.api.Test
-    void checkAllInput() {
-    }
-
-    @org.junit.jupiter.api.Test
-    void checkInputLengthUserIsPredictor() {
-    }
-
-    @org.junit.jupiter.api.Test
-    void checkInputLengthUserNotPredictor() {
-    }
-
-    @org.junit.jupiter.api.Test
     void checkIfOpenClosedExist() {
         assertTrue(user.checkIfOpenClosedExist("OC2"));
     }
@@ -38,10 +21,6 @@ class UserTest {
     @org.junit.jupiter.api.Test
     void calculateAndCheckUserPredictionNumber() {
         assertEquals(2, user.calculateAndCheckUserPredictionNumber("OO2"));
-    }
-
-    @org.junit.jupiter.api.Test
-    void checkUserPredictionNumberRange() {
     }
 
     @org.junit.jupiter.api.Test
