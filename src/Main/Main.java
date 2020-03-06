@@ -31,6 +31,7 @@ public class Main {
             if (user.getCheckIfUserIsPredictor() == true) {
                 predictionNumber = user.getUserPredictionNumber();
             }
+
             else {
                 predictionNumber = computer.computerPredictionNumber();
             }
@@ -50,9 +51,11 @@ public class Main {
                         System.out.println("Goodbye!");
                         stopPlaying = true;
                     }
+
                     else if (playAgainAnswer.equalsIgnoreCase("yes")) {
                         turn = 1;  // reset turn before new game
                         break;
+
                     }
                     else {
                         System.out.println("Bad input. Please put 'Yes' or 'No'");

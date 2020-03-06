@@ -34,6 +34,7 @@ public class User {
         else {
             checkInputLengthUserNotPredictor(getUserAnswer());
         }
+
         checkIfOpenClosedExist(getUserAnswer());
     }
 
@@ -78,6 +79,7 @@ public class User {
 
         else {
             System.out.println("Bad input: the first two letters should indicate [O]pen or [C]losed state for each hand.");
+
             promptUserForInput();
         }
 
@@ -125,6 +127,7 @@ public class User {
             if (this.turn % 2 != 0) {
                 return true;
             }
+
             else {
                 return false;
             }

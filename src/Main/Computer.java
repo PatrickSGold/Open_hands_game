@@ -12,6 +12,7 @@ public class Computer {
             if ((random.nextInt(100 - 1) + 1) < 50) {
                 computerAnswer += 'O';
             }
+
             else {
                 computerAnswer += 'C';
             }
@@ -24,9 +25,11 @@ public class Computer {
         if (computerAnswer.charAt(0) == 'O' || computerAnswer.charAt(0) == 'o') {
             computerOpenHands++;
         }
+
         if (computerAnswer.charAt(1) == 'O' || computerAnswer.charAt(1) == 'o') {
             computerOpenHands++;
         }
+
         return computerOpenHands;
     }
 
@@ -39,6 +42,7 @@ public class Computer {
                 computerPredictionNumber = Integer.parseInt(computerAnswer.substring(2, 3));
             }
         }
+
         catch (NumberFormatException e) {
             System.out.println("The generated prediction number is not a number");
         }
@@ -50,7 +54,9 @@ public class Computer {
     public boolean checkIfComputerIsPredictor() {  // made public instead of private for testing
         if (this.turn % 2 == 0) {
             return true;
-        } else {
+        }
+
+        else {
             return false;
         }
     }
