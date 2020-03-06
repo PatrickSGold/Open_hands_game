@@ -11,7 +11,7 @@ public class User {
     public void promptUserForInput() {
         Scanner input = new Scanner(System.in);
 
-        if (checkIfUserIsPredictor() == true) {
+        if (checkIfUserIsPredictor()) {
             System.out.println("You are the predictor.");
         }
 
@@ -22,11 +22,11 @@ public class User {
         System.out.println("What is your input? ");
         userAnswer = input.nextLine();
 
-        checkAllInput(getUserAnswer());
+        checkAllInput();
     }
 
-    private void checkAllInput(String userAnswer) {
-        if (checkIfUserIsPredictor() == true) {
+    private void checkAllInput() {
+        if (checkIfUserIsPredictor()) {
             checkInputLengthUserIsPredictor(getUserAnswer());
             calculateAndCheckUserPredictionNumber(getUserAnswer());
         }
@@ -36,7 +36,7 @@ public class User {
         }
 
         checkIfOpenClosedExist(getUserAnswer());
-        if (checkIfOpenClosedExist(getUserAnswer()) == false) {
+        if (!checkIfOpenClosedExist(getUserAnswer())) {
             displayErrorMessageIfOpenClosedDoNotExist();
         }
     }

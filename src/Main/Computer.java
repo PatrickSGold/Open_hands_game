@@ -37,7 +37,7 @@ public class Computer {
         int computerPredictionNumber = 0;
 
         try {
-            if (checkIfComputerIsPredictor() == true) {
+            if (checkIfComputerIsPredictor()) {
                 computerAnswer += random.nextInt(4 - 1) + 1;  // generate prediction number
                 computerPredictionNumber = Integer.parseInt(computerAnswer.substring(2, 3));
             }
