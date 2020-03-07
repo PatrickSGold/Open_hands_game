@@ -45,7 +45,7 @@ public class Computer {
         }
 
         catch (NumberFormatException e) {
-            System.out.println("The generated prediction number is not a number");
+            System.out.println("\nThe generated prediction number is not a number");
         }
 
             return computerPredictionNumber;

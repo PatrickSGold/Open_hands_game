@@ -24,7 +24,7 @@ public class Main {
                 play.askToReplayGame();
 
                 while (!play.replayAnswerFormatCorrect()) {
-                    System.out.println("Bad input. Please enter 'Yes' or 'No'");
+                    System.out.println("\nBad input. Please enter 'Yes' or 'No'");
                     play.setPlayAgainAnswer(input.nextLine());
                 }
 
