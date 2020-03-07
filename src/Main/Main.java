@@ -20,7 +20,7 @@ public class Main {
             play.displayComputerAnswerAndOpenHands();
 
             if (play.gameIsWon()) {
-                System.out.println("\nYou win! \n");
+                System.out.println("\nYou win!");
                 play.askToReplayGame();
 
                 while (!play.replayAnswerFormatCorrect()) {

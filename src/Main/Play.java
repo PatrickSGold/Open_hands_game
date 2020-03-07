@@ -43,7 +43,7 @@ public class Play {
 
     public void askToReplayGame() {
         Scanner input = new Scanner(System.in);
-        System.out.print("Do you want to play again? ");
+        System.out.print("\nDo you want to play again? ");
         playAgainAnswer = input.nextLine();
     }
 
