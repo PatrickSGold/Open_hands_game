@@ -11,6 +11,8 @@ public class Main {
         int turn = 1;
         boolean stopPlaying = false;
 
+        System.out.println("Welcome to the game!");
+
         while (!stopPlaying) {
             play.setTurn(turn);
             play.runUserAndComputerClass();
@@ -18,7 +20,7 @@ public class Main {
             play.displayComputerAnswerAndOpenHands();
 
             if (play.gameIsWon()) {
-                System.out.println("You win!");
+                System.out.println("\nYou win! \n");
                 play.askToReplayGame();
 
                 while (!play.replayAnswerFormatCorrect()) {
@@ -27,7 +29,7 @@ public class Main {
                 }
 
                 if (play.endGame()) {
-                    System.out.println("Thank you for playing! Goodbye!");
+                    System.out.println("\nThank you for playing! Goodbye!");
                     stopPlaying = true;
                 }
 
@@ -37,7 +39,7 @@ public class Main {
             }
 
             else {
-                System.out.println("There is no winner!");
+                System.out.println("\nNo winner!");
                 turn++;  // increment turn for next round
             }
 

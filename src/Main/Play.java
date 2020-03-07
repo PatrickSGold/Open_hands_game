@@ -33,7 +33,7 @@ public class Play {
     }
 
     public void displayComputerAnswerAndOpenHands() {
-        System.out.println("The computers answer is: " + computer.getComputerAnswer());
+        System.out.println("\nThe computers answer is: " + computer.getComputerAnswer());
         System.out.println("Total number of open hands: " + totalOpenHands());
     }
 
@@ -43,7 +43,7 @@ public class Play {
 
     public void askToReplayGame() {
         Scanner input = new Scanner(System.in);
-        System.out.println("Do you want to play again? ");
+        System.out.print("Do you want to play again? ");
         playAgainAnswer = input.nextLine();
     }
 
