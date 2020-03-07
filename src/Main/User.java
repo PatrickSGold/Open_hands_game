@@ -11,11 +11,9 @@ public class User {
     public void promptUserForInput() {
         Scanner input = new Scanner(System.in);
 
-        if (checkIfUserIsPredictor()) {
+        if (userIsPredictor()) {
             System.out.println("You are the predictor.");
-        }
-
-        else {
+        } else {
             System.out.println("You are not the predictor");
         }
 
@@ -26,18 +24,19 @@ public class User {
     }
 
     private void checkAllInput() {
-        if (checkIfUserIsPredictor()) {
+        checkIfOpenClosedExist(getUserAnswer());
+
+        if (!checkIfOpenClosedExist(getUserAnswer())) {
+            displayErrorMessageIfOpenClosedDoNotExist();
+        }
+
+        if (userIsPredictor()) {
             checkInputLengthUserIsPredictor(getUserAnswer());
             calculateAndCheckUserPredictionNumber(getUserAnswer());
         }
 
         else {
             checkInputLengthUserNotPredictor(getUserAnswer());
-        }
-
-        checkIfOpenClosedExist(getUserAnswer());
-        if (!checkIfOpenClosedExist(getUserAnswer())) {
-            displayErrorMessageIfOpenClosedDoNotExist();
         }
     }
 
@@ -57,9 +56,7 @@ public class User {
                     "where the letters indicate [O]pen or [C]losed state for each hand.");
 
             promptUserForInput();
-        }
-
-        else if (userAnswer.length() == 3) {
+        } else if (userAnswer.length() == 3) {
             System.out.println("Bad input: no prediction expected, you are not the predictor.");
 
             promptUserForInput();
@@ -76,7 +73,7 @@ public class User {
                         || userAnswer.charAt(1) == 'o'
                         || userAnswer.charAt(1) == 'C'
                         || userAnswer.charAt(1) == 'c');
-        }
+    }
 
     public void displayErrorMessageIfOpenClosedDoNotExist() {
         if (!checkIfOpenClosedExist(getUserAnswer())) {
@@ -89,9 +86,7 @@ public class User {
     public int calculateAndCheckUserPredictionNumber(String userAnswer) {  // made public instead of private for testing
         try {
             userPredictionNumber = Integer.parseInt(userAnswer.substring(2, 3));
-        }
-
-        catch (NumberFormatException e) {
+        } catch (NumberFormatException e) {
             System.out.println("Bad input. Prediction should be a number, in the range of 1-4.");
 
             promptUserForInput();
@@ -99,14 +94,6 @@ public class User {
 
         checkUserPredictionNumberRange();
         return userPredictionNumber;
-    }
-
-    public void checkUserPredictionNumberRange() {   // made public instead of private for testing
-        if (userPredictionNumber <= 0 || userPredictionNumber > 4) {
-            System.out.println("Bad input. Prediction should be in the range of 1-4.");
-
-            promptUserForInput();
-        }
     }
 
     public int countUserOpenHands(String userAnswer) {
@@ -123,25 +110,35 @@ public class User {
         return userOpenHands;
     }
 
-    public boolean checkIfUserIsPredictor() {  // made public instead of private for testing
+    public boolean userIsPredictor() {  // made public instead of private for testing
         return this.turn % 2 != 0;
     }
 
-    public void setTurn ( int currentTurn) {
+    public void checkUserPredictionNumberRange() {   // made public instead of private for testing
+        if (userPredictionNumber <= 0 || userPredictionNumber > 4) {
+            System.out.println("Bad input. Prediction should be in the range of 1-4.");
+
+            promptUserForInput();
+        }
+    }
+
+    public void setTurn(int currentTurn) {
         turn = currentTurn;
     }
 
-    public String getUserAnswer () {
+    public void setUserAnswer(String newUserAnswer) {
+        userAnswer = newUserAnswer;
+    }
+
+    public String getUserAnswer() {
         return userAnswer;
     }
 
-    public int getUserPredictionNumber () {
+    public int getUserPredictionNumber() {
         return userPredictionNumber;
     }
 
-    public boolean getCheckIfUserIsPredictor () {
-        return checkIfUserIsPredictor();
-    }
-    }
+}
+
 
 

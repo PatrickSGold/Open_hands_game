@@ -6,7 +6,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class UserTest {
 
-    private User user;
+    User user;
 
     @BeforeEach
     void init() {
@@ -33,9 +33,9 @@ class UserTest {
     @org.junit.jupiter.api.Test
     void checkIfUserIsPredictor() {
         user.setTurn(1);
-        assertTrue(user.checkIfUserIsPredictor());
+        assertTrue(user.userIsPredictor());
         user.setTurn(2);
-        assertFalse(user.checkIfUserIsPredictor());
+        assertFalse(user.userIsPredictor());
     }
 
 

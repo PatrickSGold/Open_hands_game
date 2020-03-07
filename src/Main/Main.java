@@ -6,76 +6,42 @@ public class Main {
 
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
-
-        User user = new User();
-        Computer computer = new Computer();
+        Play play = new Play();
 
         int turn = 1;
-        int openHands = 0;
-        int predictionNumber = 0;
         boolean stopPlaying = false;
 
-        // beginning of game
-        while (stopPlaying == false) {
-            // run the user class and add user open hands to total open hands
-            user.setTurn(turn);
-            user.promptUserForInput();
-            openHands += user.countUserOpenHands(user.getUserAnswer());
+        while (!stopPlaying) {
+            play.setTurn(turn);
+            play.runUserAndComputerClass();
+            play.assignPredictionNumber();
+            play.displayComputerAnswerAndOpenHands();
 
-            // run the computer class and add computer open hands to total open hands
-            computer.setTurn(turn);
-            computer.generateComputerOpenOrClosedAnswer();
-            openHands += computer.countComputerOpenHands(computer.getComputerAnswer());
-
-            // Assign relevant prediction number
-            if (user.getCheckIfUserIsPredictor() == true) {
-                predictionNumber = user.getUserPredictionNumber();
-            }
-
-            else {
-                predictionNumber = computer.computerPredictionNumber();
-            }
-
-            System.out.println("The computers answer is: " + computer.getComputerAnswer());
-            System.out.println("Total number of open hands: " + openHands);
-
-            // display winning message when game is won
-            if (predictionNumber == openHands) {
+            if (play.gameIsWon()) {
                 System.out.println("You win!");
-                System.out.println("Do you want to play again? ");
-                String playAgainAnswer = input.nextLine();
+                play.askToReplayGame();
 
-                // end or restart the game
-                while (stopPlaying == false) {
-                    if (playAgainAnswer.equalsIgnoreCase("no")) {
-                        System.out.println("Goodbye!");
-                        stopPlaying = true;
-                    }
+                while (!play.replayAnswerFormatCorrect()) {
+                    System.out.println("Bad input. Please enter 'Yes' or 'No'");
+                    play.setPlayAgainAnswer(input.nextLine());
+                }
 
-                    else if (playAgainAnswer.equalsIgnoreCase("yes")) {
-                        turn = 1;  // reset turn before new game
-                        break;
+                if (play.endGame()) {
+                    System.out.println("Thank you for playing! Goodbye!");
+                    stopPlaying = true;
+                }
 
-                    }
-                    else {
-                        System.out.println("Bad input. Please put 'Yes' or 'No'");
-                        playAgainAnswer = input.nextLine();
-                    }
+                else if (play.replayGame()) {
+                    turn = 1;  // reset turn for next game
                 }
             }
 
-            // display message if there is no winner
             else {
-                System.out.println("No winner!");
-                turn++; // increment turn for next round
+                System.out.println("There is no winner!");
+                turn++;  // increment turn for next round
             }
 
-            // reset openHands and computerAnswer for next round or the new game
-            openHands = 0;
-            computer.setComputerAnswer("");
-
+            play.resetComputerAnswerBeforeNextRound();
         }
     }
 }
-
-

@@ -7,7 +7,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class ComputerTest {
 
-    private Computer computer;
+    Computer computer;
 
     @BeforeEach
     void init() {
@@ -45,13 +45,6 @@ class ComputerTest {
         assertEquals(3, computer.getComputerAnswer().length());
     }
 
-    @Test
-    void computerPredictionNumberNotAddedToComputerAnswerIfComputerIsNotPredictor() {
-        computer.setTurn(1);
-        computer.generateComputerOpenOrClosedAnswer();
-        computer.computerPredictionNumber();
-        assertEquals(2, computer.getComputerAnswer().length());
-    }
 
     @Test
     void checkIfComputerIsPredictor() {

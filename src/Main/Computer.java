@@ -8,8 +8,9 @@ public class Computer {
 
     public void generateComputerOpenOrClosedAnswer() {
         while (computerAnswer.length() != 2) {
-            // if random number < 50 == open hand, else == closed hand
-            if ((random.nextInt(100 - 1) + 1) < 50) {
+            int randomNumber = random.nextInt(100 - 1) + 1;
+
+            if (randomNumber < 50) {
                 computerAnswer += 'O';
             }
 
