@@ -36,7 +36,7 @@ public class Computer {
 
     public int getComputerPredictionNumber() {
         try {
-            if (checkIfComputerIsPredictor()) {
+            if (computerIsPredictor()) {
                 computerAnswer += random.nextInt(4 - 1) + 1;
             }
         }
@@ -49,7 +49,7 @@ public class Computer {
         }
 
 
-    private boolean checkIfComputerIsPredictor() {
+    private boolean computerIsPredictor() {
         return this.turn % 2 == 0;
 
     }
