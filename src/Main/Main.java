@@ -19,6 +19,8 @@ public class Main {
             play.assignPredictionNumber();
             play.displayComputerAnswerAndOpenHands();
 
+            System.out.println("Why won't it push?!");
+
             if (play.gameIsWon()) {
                 System.out.println("\nYou win!");
                 play.askToReplayGame();
