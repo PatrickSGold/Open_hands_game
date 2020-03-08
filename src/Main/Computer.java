@@ -34,13 +34,10 @@ public class Computer {
         return computerOpenHands;
     }
 
-    public int computerPredictionNumber() {
-        int computerPredictionNumber = 0;
-
+    public int getComputerPredictionNumber() {
         try {
             if (checkIfComputerIsPredictor()) {
                 computerAnswer += random.nextInt(4 - 1) + 1;  // generate prediction number
-                computerPredictionNumber = Integer.parseInt(computerAnswer.substring(2, 3));
             }
         }
 
@@ -48,7 +45,7 @@ public class Computer {
             System.out.println("\nThe generated prediction number is not a number");
         }
 
-            return computerPredictionNumber;
+            return Integer.parseInt(computerAnswer.substring(2, 3));
         }
 
 

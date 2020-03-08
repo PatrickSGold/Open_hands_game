@@ -28,7 +28,7 @@ public class Play {
         }
 
         else {
-            return computer.computerPredictionNumber();
+            return computer.getComputerPredictionNumber();
         }
     }
 

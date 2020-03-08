@@ -56,7 +56,9 @@ public class User {
                     "where the letters indicate [O]pen or [C]losed state for each hand.");
 
             promptUserForInput();
-        } else if (userAnswer.length() == 3) {
+        }
+
+        else if (userAnswer.length() == 3) {
             System.out.println("\nBad input: no prediction expected, you are not the predictor.");
 
             promptUserForInput();
@@ -86,7 +88,9 @@ public class User {
     public int checkUserPredictionNumber(String userAnswer) {  // made public instead of private for testing
         try {
             userPredictionNumber = Integer.parseInt(userAnswer.substring(2, 3));
-        } catch (NumberFormatException e) {
+        }
+
+        catch (NumberFormatException e) {
             System.out.println("\nBad input. Prediction should be a number, in the range of 1-4.");
 
             promptUserForInput();
