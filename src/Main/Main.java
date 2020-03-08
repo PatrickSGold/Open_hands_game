@@ -17,14 +17,14 @@ public class Main {
             play.setTurn(turn);
             play.runUserAndComputerClass();
             play.assignPredictionNumber();
-            play.displayComputerAnswerAndOpenHands();
+            play.displayComputerAnswerAndTotalOpenHands();
 
             if (play.gameIsWon()) {
                 System.out.println("\nYou win!");
                 play.askToReplayGame();
 
-                while (!play.replayAnswerFormatCorrect()) {
-                    System.out.println("\nBad input. Please enter 'Yes' or 'No'");
+                while (!play.replayAnswerCorrectFormat()) {
+                    System.out.print("\nBad input. Please enter 'Yes' or 'No': ");
                     play.setPlayAgainAnswer(input.nextLine());
                 }
 

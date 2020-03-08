@@ -52,13 +52,13 @@ class PlayTest {
     }
 
     @Test
-    void replayAnswerFormatCorrect() {
+    void replayAnswerCorrectFormat() {
         play.setPlayAgainAnswer("yes");
-        assertTrue(play.replayAnswerFormatCorrect());
+        assertTrue(play.replayAnswerCorrectFormat());
         play.setPlayAgainAnswer("no");
-        assertTrue(play.replayAnswerFormatCorrect());
+        assertTrue(play.replayAnswerCorrectFormat());
         play.setPlayAgainAnswer("ye");
-        assertFalse(play.replayAnswerFormatCorrect());
+        assertFalse(play.replayAnswerCorrectFormat());
     }
 
     @Test

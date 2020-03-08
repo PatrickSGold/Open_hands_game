@@ -18,10 +18,6 @@ public class Play {
         computer.generateComputerOpenOrClosedAnswer();
     }
 
-    public int totalOpenHands() {
-        return user.getUserOpenHands(user.getUserAnswer()) + computer.getComputerOpenHands(computer.getComputerAnswer());
-    }
-
     public int assignPredictionNumber() {
         if (user.userIsPredictor()) {
             return user.getUserPredictionNumber();
@@ -32,7 +28,7 @@ public class Play {
         }
     }
 
-    public void displayComputerAnswerAndOpenHands() {
+    public void displayComputerAnswerAndTotalOpenHands() {
         System.out.println("\nThe computers answer is: " + computer.getComputerAnswer());
         System.out.println("Total number of open hands: " + totalOpenHands());
     }
@@ -41,15 +37,24 @@ public class Play {
         return (assignPredictionNumber() == totalOpenHands());
     }
 
+    private int totalOpenHands() {
+        return user.getUserOpenHands(user.getUserAnswer()) + computer.getComputerOpenHands(computer.getComputerAnswer());
+    }
+
     public void askToReplayGame() {
         Scanner input = new Scanner(System.in);
         System.out.print("\nDo you want to play again? ");
         playAgainAnswer = input.nextLine();
     }
 
-    public boolean replayAnswerFormatCorrect() {
+    public boolean replayAnswerCorrectFormat() {
         return playAgainAnswer.equalsIgnoreCase("no") || playAgainAnswer.equalsIgnoreCase("yes");
     }
+
+    public void setPlayAgainAnswer(String newPlayAgainAnswer) {
+        playAgainAnswer = newPlayAgainAnswer;
+    }
+
 
     public boolean endGame() {
         return playAgainAnswer.equalsIgnoreCase("no");
@@ -65,10 +70,6 @@ public class Play {
 
     public void setTurn(int newTurn) {
         turn = newTurn;
-    }
-
-    public void setPlayAgainAnswer(String newPlayAgainAnswer) {
-        playAgainAnswer = newPlayAgainAnswer;
     }
 
 }

@@ -130,7 +130,7 @@ public class User {
         this.turn = currentTurn;
     }
 
-    public void setUserAnswer(String newUserAnswer) {
+    public void setUserAnswer(String newUserAnswer) {  // used for testing purposes
         userAnswer = newUserAnswer;
     }
 

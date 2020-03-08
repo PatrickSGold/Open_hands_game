@@ -48,7 +48,6 @@ public class Computer {
             return Integer.parseInt(computerAnswer.substring(2, 3));
         }
 
-
     private boolean computerIsPredictor() {
         return this.turn % 2 == 0;
 
