@@ -32,7 +32,7 @@ public class User {
 
         if (userIsPredictor()) {
             checkInputLengthUserIsPredictor(getUserAnswer());
-            calculateAndCheckUserPredictionNumber(getUserAnswer());
+            checkUserPredictionNumber(getUserAnswer());
         }
 
         else {
@@ -83,7 +83,7 @@ public class User {
         }
     }
 
-    public int calculateAndCheckUserPredictionNumber(String userAnswer) {  // made public instead of private for testing
+    public int checkUserPredictionNumber(String userAnswer) {  // made public instead of private for testing
         try {
             userPredictionNumber = Integer.parseInt(userAnswer.substring(2, 3));
         } catch (NumberFormatException e) {
@@ -111,10 +111,10 @@ public class User {
     }
 
     public boolean userIsPredictor() {  // made public instead of private for testing
-        return this.turn % 2 != 0;
+        return turn % 2 != 0;
     }
 
-    public void checkUserPredictionNumberRange() {   // made public instead of private for testing
+    private void checkUserPredictionNumberRange() {   // made public instead of private for testing
         if (userPredictionNumber <= 0 || userPredictionNumber > 4) {
             System.out.println("\nBad input. Prediction should be in the range of 1-4.");
 
@@ -123,7 +123,7 @@ public class User {
     }
 
     public void setTurn(int currentTurn) {
-        turn = currentTurn;
+        this.turn = currentTurn;
     }
 
     public void setUserAnswer(String newUserAnswer) {

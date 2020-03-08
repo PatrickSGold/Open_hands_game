@@ -58,7 +58,7 @@ public class Computer {
     }
 
     public void setTurn(int currentTurn) {
-        turn = currentTurn;
+        this.turn = currentTurn;
     }
 
     public void setComputerAnswer(String newComputerAnswer) {

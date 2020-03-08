@@ -20,14 +20,16 @@ class UserTest {
     }
 
     @org.junit.jupiter.api.Test
-    void calculateAndCheckUserPredictionNumber() {
-        assertEquals(2, user.calculateAndCheckUserPredictionNumber("OO2"));
+    void checkUserPredictionNumber() {
+        assertEquals(2, user.checkUserPredictionNumber("OO2"));
+        assertNotEquals(2, user.checkUserPredictionNumber("OO3"));
     }
 
     @org.junit.jupiter.api.Test
     void countUserOpenHands() {
         assertEquals(2, user.countUserOpenHands("OO2"));
         assertEquals(0, user.countUserOpenHands("CC3"));
+        assertNotEquals(2, user.countUserOpenHands("OC"));
     }
 
     @org.junit.jupiter.api.Test
@@ -37,6 +39,7 @@ class UserTest {
         user.setTurn(2);
         assertFalse(user.userIsPredictor());
     }
+
 
 
 }
