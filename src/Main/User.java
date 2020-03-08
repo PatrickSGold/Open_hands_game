@@ -40,6 +40,18 @@ public class User {
         }
     }
 
+    private boolean checkIfOpenClosedExist(String userAnswer) {
+        return (userAnswer.charAt(0) == 'O'
+                || userAnswer.charAt(0) == 'o'
+                || userAnswer.charAt(0) == 'C'
+                || userAnswer.charAt(0) == 'c')
+                &&
+                (userAnswer.charAt(1) == 'O'
+                        || userAnswer.charAt(1) == 'o'
+                        || userAnswer.charAt(1) == 'C'
+                        || userAnswer.charAt(1) == 'c');
+    }
+
     private void checkInputLengthUserIsPredictor(String userAnswer) {
         if (userAnswer.length() != 3) {
             System.out.println("\nBad input: correct input should be of the form CC3, " +
@@ -47,6 +59,14 @@ public class User {
                     "followed by the prediction (0-4).");
 
             promptUserForInput();  // start over
+        }
+    }
+
+    private void checkUserPredictionNumberRange() {
+        if (userPredictionNumber <= 0 || userPredictionNumber > 4) {
+            System.out.println("\nBad input. Prediction should be in the range of 1-4.");
+
+            promptUserForInput();
         }
     }
 
@@ -65,19 +85,7 @@ public class User {
         }
     }
 
-    public boolean checkIfOpenClosedExist(String userAnswer) {  // made public instead of private for testing
-        return (userAnswer.charAt(0) == 'O'
-                || userAnswer.charAt(0) == 'o'
-                || userAnswer.charAt(0) == 'C'
-                || userAnswer.charAt(0) == 'c')
-                &&
-                (userAnswer.charAt(1) == 'O'
-                        || userAnswer.charAt(1) == 'o'
-                        || userAnswer.charAt(1) == 'C'
-                        || userAnswer.charAt(1) == 'c');
-    }
-
-    public void displayErrorMessageIfOpenClosedDoNotExist() {
+    private void displayErrorMessageIfOpenClosedDoNotExist() {
         if (!checkIfOpenClosedExist(getUserAnswer())) {
             System.out.println("\nBad input: the first two letters should indicate [O]pen or [C]losed state for each hand.");
 
@@ -85,7 +93,7 @@ public class User {
         }
     }
 
-    public int checkUserPredictionNumber(String userAnswer) {  // made public instead of private for testing
+    private int checkUserPredictionNumber(String userAnswer) {
         try {
             userPredictionNumber = Integer.parseInt(userAnswer.substring(2, 3));
         }
@@ -100,7 +108,7 @@ public class User {
         return userPredictionNumber;
     }
 
-    public int countUserOpenHands(String userAnswer) {
+    public int getUserOpenHands(String userAnswer) {
         int userOpenHands = 0;
 
         if (userAnswer.charAt(0) == 'O' || userAnswer.charAt(0) == 'o') {
@@ -116,14 +124,6 @@ public class User {
 
     public boolean userIsPredictor() {  // made public instead of private for testing
         return turn % 2 != 0;
-    }
-
-    private void checkUserPredictionNumberRange() {   // made public instead of private for testing
-        if (userPredictionNumber <= 0 || userPredictionNumber > 4) {
-            System.out.println("\nBad input. Prediction should be in the range of 1-4.");
-
-            promptUserForInput();
-        }
     }
 
     public void setTurn(int currentTurn) {

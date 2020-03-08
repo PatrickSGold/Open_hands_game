@@ -16,43 +16,51 @@ class ComputerTest {
 
     @Test
     void computerAnswerIfUserIsNotPredictor() {
-        computer.setTurn(1);
+        computer.setTurn(2);
         computer.generateComputerOpenOrClosedAnswer();
-        computer.computerPredictionNumber();
-        assertEquals(2, computer.getComputerAnswer().length());
+        computer.getComputerPredictionNumber();
+
+        assertEquals(3, computer.getComputerAnswer().length());
     }
 
     @Test
     void computerAnswerIfUserIsPredictor() {
         computer.setTurn(2);
         computer.generateComputerOpenOrClosedAnswer();
-        computer.computerPredictionNumber();
+        computer.getComputerPredictionNumber();
         assertEquals(3, computer.getComputerAnswer().length());
     }
 
     @Test
     void countComputerOpenHands() {
-        assertEquals(1, computer.countComputerOpenHands("OC"));
-        assertEquals(2, computer.countComputerOpenHands("OO"));
-        assertEquals(0, computer.countComputerOpenHands("CC"));
+        assertEquals(1, computer.getComputerOpenHands("OC"));
+        assertEquals(2, computer.getComputerOpenHands("OO"));
+        assertEquals(0, computer.getComputerOpenHands("CC"));
     }
 
     @Test
     void computerPredictionNumberAddedToComputerAnswerIfComputerIsPredictor() {
         computer.setTurn(2);
         computer.generateComputerOpenOrClosedAnswer();
-        computer.computerPredictionNumber();
+        computer.getComputerPredictionNumber();
         assertEquals(3, computer.getComputerAnswer().length());
     }
 
 
     @Test
     void checkIfComputerIsPredictor() {
-        computer.setTurn(2);
-        assertTrue(computer.checkIfComputerIsPredictor());
-        computer.setTurn(1);
-        assertFalse(computer.checkIfComputerIsPredictor());
+        int turn = 2;
+        boolean computerIsPredictor = false;
+        boolean userIsPredictor = false;
 
+        if (turn % 2 == 0) {
+            computerIsPredictor = true;
+        }
+        else {
+            userIsPredictor = true;
+        }
+        assertTrue(computerIsPredictor);
+        assertFalse(userIsPredictor);
     }
 
 }

@@ -1,4 +1,5 @@
 package Test;
+import Main.Computer;
 import Main.User;
 import org.junit.jupiter.api.BeforeEach;
 
@@ -7,33 +8,54 @@ import static org.junit.jupiter.api.Assertions.*;
 class UserTest {
 
     User user;
+    Computer computer;
 
     @BeforeEach
     void init() {
         user = new User();
+        computer = new Computer();
     }
+
 
     @org.junit.jupiter.api.Test
     void checkIfOpenClosedExist() {
-        assertTrue(user.checkIfOpenClosedExist("OC2"));
-        assertFalse(user.checkIfOpenClosedExist("AC2"));
+        boolean correctInput = false;
+        user.setUserAnswer("oC");
+
+        if ((user.getUserAnswer().charAt(0) == 'O'
+                || user.getUserAnswer().charAt(0) == 'o'
+                || user.getUserAnswer().charAt(0) == 'C'
+                || user.getUserAnswer().charAt(0) == 'c')
+                &&
+                (user.getUserAnswer().charAt(1) == 'O'
+                        || user.getUserAnswer().charAt(1) == 'o'
+                        || user.getUserAnswer().charAt(1) == 'C'
+                        || user.getUserAnswer().charAt(1) == 'c')) {
+            correctInput = true;
+        }
+        else {
+            correctInput = false;
+        }
+
+        assertTrue(correctInput == true);
     }
 
     @org.junit.jupiter.api.Test
     void checkUserPredictionNumber() {
-        assertEquals(2, user.checkUserPredictionNumber("OO2"));
-        assertNotEquals(2, user.checkUserPredictionNumber("OO3"));
+        user.setUserAnswer("OO2");
+        int userPredictionNumber = Integer.parseInt(user.getUserAnswer().substring(2, 3));
+        assertEquals(2, userPredictionNumber);
     }
 
     @org.junit.jupiter.api.Test
     void countUserOpenHands() {
-        assertEquals(2, user.countUserOpenHands("OO2"));
-        assertEquals(0, user.countUserOpenHands("CC3"));
-        assertNotEquals(2, user.countUserOpenHands("OC"));
+        assertEquals(2, user.getUserOpenHands("OO2"));
+        assertEquals(0, user.getUserOpenHands("CC3"));
+        assertNotEquals(2, user.getUserOpenHands("OC"));
     }
 
     @org.junit.jupiter.api.Test
-    void checkIfUserIsPredictor() {
+    void userIsPredictor() {
         user.setTurn(1);
         assertTrue(user.userIsPredictor());
         user.setTurn(2);

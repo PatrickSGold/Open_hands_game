@@ -20,7 +20,7 @@ public class Computer {
         }
     }
 
-    public int countComputerOpenHands(String computerAnswer) {
+    public int getComputerOpenHands(String computerAnswer) {
         int computerOpenHands = 0;
 
         if (computerAnswer.charAt(0) == 'O' || computerAnswer.charAt(0) == 'o') {
@@ -37,7 +37,7 @@ public class Computer {
     public int getComputerPredictionNumber() {
         try {
             if (checkIfComputerIsPredictor()) {
-                computerAnswer += random.nextInt(4 - 1) + 1;  // generate prediction number
+                computerAnswer += random.nextInt(4 - 1) + 1;
             }
         }
 
@@ -49,7 +49,7 @@ public class Computer {
         }
 
 
-    public boolean checkIfComputerIsPredictor() {  // made public instead of private for testing
+    private boolean checkIfComputerIsPredictor() {
         return this.turn % 2 == 0;
 
     }

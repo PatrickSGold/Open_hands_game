@@ -24,12 +24,24 @@ class PlayTest {
 
     @org.junit.jupiter.api.Test
     void totalOpenHands() {
-        assertEquals(4, user.countUserOpenHands("OO2") + computer.countComputerOpenHands("OO"));
-        assertNotEquals(2, user.countUserOpenHands("OO2") + computer.countComputerOpenHands("OO"));
+        assertEquals(4, user.getUserOpenHands("OO2") + computer.getComputerOpenHands("OO"));
+        assertNotEquals(2, user.getUserOpenHands("OO2") + computer.getComputerOpenHands("OO"));
     }
 
     @org.junit.jupiter.api.Test
-    void assignPredictionNumber() {   // cannot get this test to work??
+    void assignPredictionNumber() {
+        int predictionNumber = 0;
+        user.setTurn(1);
+
+        if (user.userIsPredictor()) {
+            predictionNumber = user.getUserPredictionNumber();
+        }
+
+        else {
+            predictionNumber = computer.getComputerPredictionNumber();
+        }
+
+        assertTrue(predictionNumber == user.getUserPredictionNumber());
     }
 
     @Test

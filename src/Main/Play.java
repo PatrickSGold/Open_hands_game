@@ -19,7 +19,7 @@ public class Play {
     }
 
     public int totalOpenHands() {
-        return user.countUserOpenHands(user.getUserAnswer()) + computer.countComputerOpenHands(computer.getComputerAnswer());
+        return user.getUserOpenHands(user.getUserAnswer()) + computer.getComputerOpenHands(computer.getComputerAnswer());
     }
 
     public int assignPredictionNumber() {
