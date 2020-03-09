@@ -2,7 +2,7 @@ package Main;
 
 import java.util.Scanner;
 
-public class Play {
+public class Play extends User {
     User user = new User();
     Computer computer = new Computer();
 

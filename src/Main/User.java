@@ -40,7 +40,7 @@ public class User {
 
     private void checkInputLengthUserIsPredictor(String userAnswer) {
         if (userAnswer.length() != 3) {
-            System.out.println("\nBad input: correct input should be of the form CC3, " +
+            System.out.println("\nBad input: correct input should be of the form OC3, " +
                     "where the first two letters indicate [O]pen or [C]losed state for each hand, " +
                     "followed by the prediction (0-4).");
 
