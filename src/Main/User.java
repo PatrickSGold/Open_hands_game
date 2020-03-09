@@ -38,20 +38,8 @@ public class User {
         }
     }
 
-    private boolean checkIfOpenClosedExist(String userAnswer) {
-        return (userAnswer.charAt(0) == 'O'
-                || userAnswer.charAt(0) == 'o'
-                || userAnswer.charAt(0) == 'C'
-                || userAnswer.charAt(0) == 'c')
-                &&
-                (userAnswer.charAt(1) == 'O'
-                        || userAnswer.charAt(1) == 'o'
-                        || userAnswer.charAt(1) == 'C'
-                        || userAnswer.charAt(1) == 'c');
-    }
-
     private void checkInputLengthUserIsPredictor(String userAnswer) {
-        if (userAnswer.length() == 0 || userAnswer.length() != 3) {
+        if (userAnswer.length() != 3) {
             System.out.println("\nBad input: correct input should be of the form CC3, " +
                     "where the first two letters indicate [O]pen or [C]losed state for each hand, " +
                     "followed by the prediction (0-4).");
@@ -69,7 +57,7 @@ public class User {
     }
 
     private void checkInputLengthUserNotPredictor(String userAnswer) {
-        if (userAnswer.length() == 0 || userAnswer.length() < 2 || userAnswer.length() > 3) {
+        if (userAnswer.length() < 2 || userAnswer.length() > 3) {
             System.out.println("\nBad input: correct input should be of the form OC, " +
                     "where the letters indicate [O]pen or [C]losed state for each hand.");
 
@@ -81,6 +69,18 @@ public class User {
 
             promptUserForInput();
         }
+    }
+
+    private boolean checkIfOpenClosedExist(String userAnswer) {
+        return (userAnswer.charAt(0) == 'O'
+                || userAnswer.charAt(0) == 'o'
+                || userAnswer.charAt(0) == 'C'
+                || userAnswer.charAt(0) == 'c')
+                &&
+                (userAnswer.charAt(1) == 'O'
+                        || userAnswer.charAt(1) == 'o'
+                        || userAnswer.charAt(1) == 'C'
+                        || userAnswer.charAt(1) == 'c');
     }
 
     private void displayErrorMessageIfOpenClosedDoNotExist() {
