@@ -91,7 +91,7 @@ public class User {
         }
     }
 
-    private int checkUserPredictionNumber(String userAnswer) {
+    private void checkUserPredictionNumber(String userAnswer) {
         try {
             userPredictionNumber = Integer.parseInt(userAnswer.substring(2, 3));
         }
@@ -103,7 +103,6 @@ public class User {
         }
 
         checkUserPredictionNumberRange();
-        return userPredictionNumber;
     }
 
     public int getUserOpenHands(String userAnswer) {
