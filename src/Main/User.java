@@ -24,12 +24,6 @@ public class User {
     }
 
     private void checkAllInput() {
-        checkIfOpenClosedExist(getUserAnswer());
-
-        if (!checkIfOpenClosedExist(getUserAnswer())) {
-            displayErrorMessageIfOpenClosedDoNotExist();
-        }
-
         if (userIsPredictor()) {
             checkInputLengthUserIsPredictor(getUserAnswer());
             checkUserPredictionNumber(getUserAnswer());
@@ -37,6 +31,10 @@ public class User {
 
         else {
             checkInputLengthUserNotPredictor(getUserAnswer());
+        }
+
+        if (!checkIfOpenClosedExist(getUserAnswer())) {
+            displayErrorMessageIfOpenClosedDoNotExist();
         }
     }
 
@@ -53,7 +51,7 @@ public class User {
     }
 
     private void checkInputLengthUserIsPredictor(String userAnswer) {
-        if (userAnswer.length() != 3) {
+        if (userAnswer.length() == 0 || userAnswer.length() != 3) {
             System.out.println("\nBad input: correct input should be of the form CC3, " +
                     "where the first two letters indicate [O]pen or [C]losed state for each hand, " +
                     "followed by the prediction (0-4).");
@@ -71,7 +69,7 @@ public class User {
     }
 
     private void checkInputLengthUserNotPredictor(String userAnswer) {
-        if (userAnswer.length() < 2 || userAnswer.length() > 3) {
+        if (userAnswer.length() == 0 || userAnswer.length() < 2 || userAnswer.length() > 3) {
             System.out.println("\nBad input: correct input should be of the form OC, " +
                     "where the letters indicate [O]pen or [C]losed state for each hand.");
 
